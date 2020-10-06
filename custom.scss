@@ -1,0 +1,77 @@
+//
+@import "consent";
+
+
+#iscriviti .contact-page {
+  padding-top: 3rem;
+
+}
+$facebook: #3b5998;
+$twitter: #4099ff;
+$whatsapp: #25d366;
+
+.whatsapp-share-button {
+  display: inline-block;
+  background-image: url('/assets/whatsapp-share-btn.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 67px 20px;
+  width: 67px;
+  height: 20px;
+  text-indent: -99999em;
+}
+
+.like-page {
+  margin-bottom: 2rem;
+}
+
+.content-pages-show-blog-post-wide {
+  margin-top:110px;
+}
+
+.navbar-header {
+  @media only screen and (max-width: 767px) {
+    min-height: 55px;
+
+  }
+}
+nav.navbar-collapse {
+  .navbar-nav li {
+    @media only screen and (max-width: 767px) {
+      padding-left: 15px;
+    }
+  }
+}
+#iscrizione_newsletter_page_new_signup_form {
+  .submit-button {
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 0.5em;
+
+    }
+  }
+}
+
+.row.blogactions {
+  a {
+    @media only screen and (max-width: 767px) {
+      white-space: break-spaces;
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    padding-bottom: 1em;
+  }
+}
+.find-event {
+  margin:1em 0px;
+  h4 {
+    margin-bottom: 0.5em;
+  }
+  & > div {
+    margin-bottom: 0.5em;
+  }
+}
+.promo-entry .btn-set {
+  text-align: center;
+}

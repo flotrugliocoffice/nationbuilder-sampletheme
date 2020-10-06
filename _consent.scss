@@ -1,0 +1,152 @@
+$gray-base: #02004D;
+$gray-darker: #353371;
+$gray-dark: lighten($gray-base, 20%) !default;
+$gray: #B6C5D7;
+$gray-light: #DAE1E6;
+$gray-lighter: #F3F6F7;
+$default-font-family:'Montserrat', sans-serif;
+$primaryBlue: #9f176a;
+
+.consentform {
+  font-size: 10px;
+}
+
+.lightbox-consent-form{
+  &.lcf1{
+	display:none;
+  }
+  &.lcf2{
+	display:none;
+  }
+  position: fixed;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  height:100vh;
+  align-items: center;
+  z-index:99999;
+  .consent_submit {
+	text-align: center;
+	.submit-button {
+	  margin: 40px auto 0px !important;
+	}
+  }
+
+  .terms{
+	background-color: $primaryBlue;
+	color:#FFF;
+	max-width:440px;
+	max-height: 61rem;
+	padding:40px;
+	margin:auto;
+	position:relative;
+	overflow-y: scroll;
+	@media only screen and (min-width: 450px) {
+	  max-height: auto;
+	  overflow-y: unset;
+	}
+
+	a {
+	  color:$gray-light;
+	  &:hover {
+		color:#FFF;
+	  }
+	}
+	p{
+	  color:#fff;
+	  span{
+		color:#fff;
+	  }
+	}
+	span{
+	  color:#fff;
+	}
+	.close-consent {
+	  position: absolute;
+	  top: 5px;
+	  right: 15px;
+	  cursor:pointer;
+	}
+	label{
+	  width:auto;
+	  color: #fff;
+	  font-family: $default-font-family;
+	  font-size: 14px;
+	  font-weight: 400;
+	  line-height: 20px;
+	}
+	.submit-button{
+	  margin-top:20px!important
+	}
+  }
+}
+
+
+.homepage-comitati .header-com .container-form, .newsletter-bottom, .crea-comitato{
+  .lightbox-consent-form{
+	&.lcf1{
+	  display:none;
+	}
+	&.lcf2{
+	  display:none;
+	}
+	position: fixed;
+	width: 100%;
+	background-color:rgba(0, 0, 0, 0.9);
+	top: 0;
+	left: 0;
+	height:100vh;
+	align-items: center;
+	z-index:99999;
+	.consent_submit {
+	  text-align: center;
+	  .submit-button {
+		margin: 40px auto 0px !important;
+	  }
+	}
+	.terms{
+	  background-color: $primaryBlue;
+	  max-width:440px;
+	  max-height: 61rem;
+	  padding:40px;
+	  margin:auto;
+	  position:relative;
+	  overflow-y: scroll;
+	  @media only screen and (min-width: 450px) {
+		max-height: auto;
+		overflow-y: unset;
+	  }
+
+	  p{
+		color:#FFF;
+		span{
+		  color:#FFF;
+		}
+	  }
+	  span{
+		color:#FFF;
+	  }
+	  .close-consent {
+		position: absolute;
+		top: 5px;
+		right: 15px;
+		cursor:pointer;
+	  }
+	  label{
+		width:auto;
+		color: #FFF;
+		font-family: $default-font-family;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+	  }
+	  .submit-button{
+		margin-top:20px!important
+	  }
+	}
+  }
+  .open-consent2{
+	cursor:pointer;
+  }
+}

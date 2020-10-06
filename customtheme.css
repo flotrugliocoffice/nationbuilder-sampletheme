@@ -1,0 +1,209 @@
+.consentform {
+  font-size: 10px;
+}
+
+.lightbox-consent-form {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  align-items: center;
+  z-index: 99999;
+}
+.lightbox-consent-form.lcf1 {
+  display: none;
+}
+.lightbox-consent-form.lcf2 {
+  display: none;
+}
+.lightbox-consent-form .consent_submit {
+  text-align: center;
+}
+.lightbox-consent-form .consent_submit .submit-button {
+  margin: 40px auto 0px !important;
+}
+.lightbox-consent-form .terms {
+  background-color: #9f176a;
+  color: #FFF;
+  max-width: 440px;
+  max-height: 61rem;
+  padding: 40px;
+  margin: auto;
+  position: relative;
+  overflow-y: scroll;
+}
+@media only screen and (min-width: 450px) {
+  .lightbox-consent-form .terms {
+    max-height: auto;
+    overflow-y: unset;
+  }
+}
+.lightbox-consent-form .terms a {
+  color: #DAE1E6;
+}
+.lightbox-consent-form .terms a:hover {
+  color: #FFF;
+}
+.lightbox-consent-form .terms p {
+  color: #fff;
+}
+.lightbox-consent-form .terms p span {
+  color: #fff;
+}
+.lightbox-consent-form .terms span {
+  color: #fff;
+}
+.lightbox-consent-form .terms .close-consent {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+}
+.lightbox-consent-form .terms label {
+  width: auto;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.lightbox-consent-form .terms .submit-button {
+  margin-top: 20px !important;
+}
+
+.homepage-comitati .header-com .container-form .lightbox-consent-form, .newsletter-bottom .lightbox-consent-form, .crea-comitato .lightbox-consent-form {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  align-items: center;
+  z-index: 99999;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form.lcf1, .newsletter-bottom .lightbox-consent-form.lcf1, .crea-comitato .lightbox-consent-form.lcf1 {
+  display: none;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form.lcf2, .newsletter-bottom .lightbox-consent-form.lcf2, .crea-comitato .lightbox-consent-form.lcf2 {
+  display: none;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .consent_submit, .newsletter-bottom .lightbox-consent-form .consent_submit, .crea-comitato .lightbox-consent-form .consent_submit {
+  text-align: center;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .consent_submit .submit-button, .newsletter-bottom .lightbox-consent-form .consent_submit .submit-button, .crea-comitato .lightbox-consent-form .consent_submit .submit-button {
+  margin: 40px auto 0px !important;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms, .newsletter-bottom .lightbox-consent-form .terms, .crea-comitato .lightbox-consent-form .terms {
+  background-color: #9f176a;
+  max-width: 440px;
+  max-height: 61rem;
+  padding: 40px;
+  margin: auto;
+  position: relative;
+  overflow-y: scroll;
+}
+@media only screen and (min-width: 450px) {
+  .homepage-comitati .header-com .container-form .lightbox-consent-form .terms, .newsletter-bottom .lightbox-consent-form .terms, .crea-comitato .lightbox-consent-form .terms {
+    max-height: auto;
+    overflow-y: unset;
+  }
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms p, .newsletter-bottom .lightbox-consent-form .terms p, .crea-comitato .lightbox-consent-form .terms p {
+  color: #FFF;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms p span, .newsletter-bottom .lightbox-consent-form .terms p span, .crea-comitato .lightbox-consent-form .terms p span {
+  color: #FFF;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms span, .newsletter-bottom .lightbox-consent-form .terms span, .crea-comitato .lightbox-consent-form .terms span {
+  color: #FFF;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms .close-consent, .newsletter-bottom .lightbox-consent-form .terms .close-consent, .crea-comitato .lightbox-consent-form .terms .close-consent {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms label, .newsletter-bottom .lightbox-consent-form .terms label, .crea-comitato .lightbox-consent-form .terms label {
+  width: auto;
+  color: #FFF;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.homepage-comitati .header-com .container-form .lightbox-consent-form .terms .submit-button, .newsletter-bottom .lightbox-consent-form .terms .submit-button, .crea-comitato .lightbox-consent-form .terms .submit-button {
+  margin-top: 20px !important;
+}
+.homepage-comitati .header-com .container-form .open-consent2, .newsletter-bottom .open-consent2, .crea-comitato .open-consent2 {
+  cursor: pointer;
+}
+
+#iscriviti .contact-page {
+  padding-top: 3rem;
+}
+
+.whatsapp-share-button {
+  display: inline-block;
+  background-image: url("/assets/whatsapp-share-btn.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 67px 20px;
+  width: 67px;
+  height: 20px;
+  text-indent: -99999em;
+}
+
+.like-page {
+  margin-bottom: 2rem;
+}
+
+.content-pages-show-blog-post-wide {
+  margin-top: 110px;
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-header {
+    min-height: 55px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  nav.navbar-collapse .navbar-nav li {
+    padding-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #iscrizione_newsletter_page_new_signup_form .submit-button {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .row.blogactions a {
+    white-space: break-spaces;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .row.blogactions {
+    padding-bottom: 1em;
+  }
+}
+
+.find-event {
+  margin: 1em 0px;
+}
+.find-event h4 {
+  margin-bottom: 0.5em;
+}
+.find-event > div {
+  margin-bottom: 0.5em;
+}
+
+.promo-entry .btn-set {
+  text-align: center;
+}

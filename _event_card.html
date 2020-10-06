@@ -1,0 +1,61 @@
+{% comment %}
+<div class="card event-card">
+
+  {% if event.has_meta_image? %}
+    <div class="image" style="background-image: url({{ event.meta_image_url }});"></div>
+  {% else %}
+    <a href="{{ event.url }}">
+    <div class="event-date {% cycle 'gray', 'brand-primary-lighter', 'brand-primary', 'gray-light' %}">
+        <h6 class="strong secondary">{{ event.event.local_start_at | date: '%B' }}</h6>
+        <h2 class="strong">{{ event.event.local_start_at | date: '%d' }}</h2>
+    </div>
+    </a>
+  {% endif %}
+
+  {% if event.has_meta_image? %}
+  <h6 class="strong secondary">{{ event.event.local_start_at | date: '%B %d' }}</h6>
+  {% endif %}
+  <h5 class="strong"><a href="{{ event.url }}">{{ event.name }}</a></h5>
+  {% if event.event.has_venue? %}
+    <div>
+    {% if event.event.has_venue_address? %}
+      <a href="{{ event.event.venue_address.google_map_link }}">{{ event.event.venue_name }}</a><br/>
+      {{ event.event.venue_address.location }}
+    {% else %}
+      {{ event.event.venue_name }}
+    {% endif %}
+    </div>
+  {% endif %}
+  {{ event.event.local_start_at | date: '%I:%M %p' }}
+  {% if event.event.is_multi_day? %}
+  &mdash; {{ event.event.local_end_at | event_date }}
+  {% endif %}
+
+ </div>
+{% endcomment %}
+{% assign ThumbImage = event.meta_image_url %}
+{% for attachment in event.attachments %}
+{% if attachment.file_name contains "thumb" %}
+{% capture ThumbImage %}{{ attachment.url }}{% endcapture %}
+{% endif %}
+{% endfor %}
+<div class="col-sm-12 col-md-6 text-center card event-card">
+  <div class="promotion-item enableurlrel" data-rel-url="{{ event.url }}">
+    <figure class="promo-thumb">
+      <img src="{{ ThumbImage }}" alt="{{ event.name }}">
+      <figcaption class="promo-price">{{ event.event.local_start_at | date: '%a %d %b'| replace: 'Jan','Gen' | replace: 'Feb','FEb' | replace: 'Mar','Mar' | replace: 'Apr','Apr' | replace: 'May','Mag' | replace: 'Jun','Giu' | replace: 'Jul','Lug' | replace: 'Aug','Ago' | replace: 'Sep','Set' | replace: 'Oct','Ott' | replace: 'Nov','Nov' | replace: 'Dec','Dic' | replace:'Mon', 'Lun' | replace:'Tue', 'Mar' | replace:'Wed', 'Mer' | replace:'Thu', 'Gio' | replace:'Fri', 'Ven' | replace:'Sat', 'Sab' | replace:'Sun', 'Dom' }}</figcaption>
+    </figure>
+    <div class="promo-city">
+      <h4>{{ event.name }}</h4>
+    </div>
+    <div class="promo-meta clearfix">
+      <span class="meta-inner" style="width: 100%;"><i class="fa fa-location-arrow"></i> {{ event.event.venue_address.location }}</span>
+    </div>
+    <div class="promo-entry">
+      <p>{{ event.event.content | strip_html | truncatewords:20 }}</p>
+      <div class="btn-set">
+        <a href="{{ event.url }}" class="btn">Ci sarò</a>
+      </div>
+    </div>
+  </div>
+</div>

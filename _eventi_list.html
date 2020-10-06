@@ -1,0 +1,34 @@
+{% for event in page.calendar.events_upcoming limit:3 %}
+{% assign event_tags_list = "" %}
+{% for tag in event.tags %}
+{% assign event_tags_list = tag.name | append: ", " | append: event_tags_list %}
+{% endfor %}
+{% assign ThumbImage = event.meta_image_url %}
+{% for attachment in event.attachments %}
+{% if attachment.file_name contains "thumb" %}
+{% capture ThumbImage %}{{ attachment.url }}{% endcapture %}
+{% endif %}
+{% endfor %}
+<div class="col-sm-6 col-md-4 text-center">
+    <div class="promotion-item enableurlrel" data-rel-url="{{ event.url }}">
+        <figure class="promo-thumb">
+            <img src="{{ ThumbImage }}" alt="{{ event.name }}">
+            <figcaption class="promo-price">{{ event.event.local_start_at | date: '%a %d %b'| replace: 'Jan','Gen' | replace: 'Feb','FEb' | replace: 'Mar','Mar' | replace: 'Apr','Apr' | replace: 'May','Mag' | replace: 'Jun','Giu' | replace: 'Jul','Lug' | replace: 'Aug','Ago' | replace: 'Sep','Set' | replace: 'Oct','Ott' | replace: 'Nov','Nov' | replace: 'Dec','Dic' | replace:'Mon', 'Lun' | replace:'Tue', 'Mar' | replace:'Wed', 'Mer' | replace:'Thu', 'Gio' | replace:'Fri', 'Ven' | replace:'Sat', 'Sab' | replace:'Sun', 'Dom' }}</figcaption>
+        </figure>
+        <div class="promo-city">
+            <h4>{{ event.name }}</h4>
+        </div>
+        <div class="promo-meta clearfix">
+            <span class="meta-inner" style="width: 100%;"><i class="fa fa-location-arrow"></i> {{ event.event.venue_address.location }}</span>
+        </div>
+        <div class="promo-entry">
+            <p>{{ event.event.content | strip_html | truncatewords:20 }}</p>
+            <div class="btn-set">
+                <a href="{{ event.url }}" class="btn">Ci sarò</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+

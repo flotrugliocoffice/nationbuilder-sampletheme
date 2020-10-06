@@ -1,0 +1,151 @@
+<style>
+  .pagecontent {
+    background: #fff;
+    border-radius: 6px;
+    padding: 2rem;
+  }
+
+  .inner-consent {
+
+  }
+  .contact-form div.checkbox {
+    padding-left: 20px;
+  }
+  @media only screen and (min-width: 1024px) {
+    .pagecontent {
+      margin-top: -70px;
+      border: 1px solid #e2e3e0;
+    }
+  }
+
+  .page-head {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: url('{{ attachment.url }}') no-repeat fixed center center / cover  transparent;
+  {% endif %}
+  {% endfor %}
+  }
+  .page-head .overlay {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: rgb(209,75,143);
+  background: -moz-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: -webkit-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d14b8f",endColorstr="#0079c1",GradientType=1);
+  {% endif %}
+  {% endfor %}
+  }
+
+</style>
+<div class="page-head parallax">
+  <div class="overlay">
+    <div class="container">
+      <div class="row page-head-title text-center">
+        <div class="col-lg-12">
+          <div class="col-lg-12">
+            <h1>{{page.title}}</h1>
+            {% if page.headline.size > 0 %}
+            <p>{{page.headline}}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-base">
+  <div class="no-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 pagecontent">
+
+          <div id="content">
+            <div class="blog" id="blog-page-{{ page.id }}">
+              <div class="row eventi-list">
+                {% for post in page.blog.most_recent_blog_posts %}
+                <div class="col-sm-6 col-md-4 text-center">
+                  <div class="promotion-item enableurlrel" data-rel-url="{{ post.url }}">
+                    <figure class="promo-thumb">
+                      {% for attachment in post.attachments %}
+                      {% if attachment.file_name contains "list" %}
+                      <img src="{{ attachment.url }}" alt="{{ post.headline }}">
+                      {% endif %}
+                      {% if attachment.file_name contains "thumb" %}
+                      <img src="{{ attachment.url }}" alt="{{ post.headline }}">
+                      {% endif %}
+                      {% endfor %}
+                    </figure>
+                    <div class="promo-city">
+                      <h4>{{ post.headline }}</h4>
+                    </div>
+                    <div class="promo-meta clearfix">
+                      <span class="notizie-date">{{ post.published_at | date: '%d/%m/%y' }}</span>
+                      {% for tag in post.tags %}
+                      <span class="notizie-tag {{ tag.slug }}">{{ tag.name }}</span>
+                      {% endfor %}
+                    </div>
+                    <div class="promo-entry">
+                      <p>{{ post.blog_post.content | strip_html | truncatewords:20 }}</p>
+                      <div class="btn-set">
+                        <a href="{{ post.url }}" class="btn">Leggi tutto</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            {{ page.blog.most_recent_blog_posts | paginate prev_label: "Precedente" next_label: "Successivo" | replace:'<div class="pagination">','<nav class="pagination-container">' | replace:'<ul>','<ul class="pagination">' | replace:'</div>','</nav>' }}
+          </div>
+          <div id="stream">
+            {% if page.blog.is_posting_public? %}
+
+            <div class="padbottommore">
+              <div class="form-wrap">
+                <div class="form">
+                  {% form_for blog_post_page %}
+
+                  <div class="form-errors">{% error_messages_for blog_post_page %}</div>
+
+                  <div id="blog-post-page-page-headline-input" class="blog-post-page-page-headline-input">
+                    <div class="form-group">
+                      {% text_field "page_headline", class:"text form-control" %}<label for="blog_post_page_page_headline">{{ page.blog.public_posting_prompt }}</label>
+                    </div>
+                  </div>
+
+                  <div id="blog-post-page-form-expanded" class="blog-post-page-form-expanded" style="display:none;">
+                    <div class="padtopmore">
+                      {% text_area "content_editable", class:"textarea form-control textarea-tinymce" %}
+                    </div>
+
+                    {% if page.show_consent_form? %}
+                    <div class="padtop">
+                      {% include "consent_form" %}
+                    </div>
+                    {% endif %}
+
+                    <div class="padtop">
+                      {% submit_tag "Post", class:"submit-button btn btn-primary" %}
+                      <div class="form-submit"></div>
+                    </div>
+                  </div>
+
+                  {% endform_for %}
+                </div>
+                {% unless request.logged_in? %}
+                <div class="user-session-form-container hide">
+                  {% include "user_session_form" %}
+                </div>
+                {% endunless %}
+              </div>
+            </div>
+
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

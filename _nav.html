@@ -1,0 +1,65 @@
+<style>
+  .animated .navbar-nav > li > a {
+    padding: 24px 12px;
+  }
+</style>
+<header id="head" class="navbar-default navbar-fixed-top {% if page.is_homepage? == true%}slidedown-nav{% endif%}">
+  <div class="container">
+    <div class="mega-menu-wrapper border clearfix">
+      <div class="navbar-header">
+        <!-- responsive nav button -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- /responsive nav button -->
+        <!-- logo -->
+        <a class="navbar-brand" href="{% if page.is_homepage? == true%}#start{% else %}{{site.full_url}}{%endif%}">
+          <span style="
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    white-space: nowrap;
+">DANIELA PER IL VENETO</span>
+        </a>
+        <!-- /logo -->
+      </div>
+      <!-- main nav -->
+      <nav class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          {% if page.is_homepage? == true%}
+          <li class="current"><a href="#about">Daniela</a></li>
+          <li><a href="#sostieni">Sostieni</a></li>
+          <li><a href="#iscriviti">Iscriviti</a></li>
+          {% else %}
+          <li class=""><a href="{{site.full_url}}">Home</a></li>
+          {% endif %}
+          {% for child in site.root_nav_pages %}
+          {% if child.leaf? or child.nav_children.size == 0 or child.slug == "sfide" %}
+          <li {% if child.is_or_is_ancestor_of_current_page? %}class="active"{% endif %}>
+            <a href="{{ child.url }}" class="external  {{ child.slug }}">{{ child.name }}</a>
+          </li>
+          {% else %}
+          <li class="{% if child.is_or_is_ancestor_of_current_page? %}active{% endif %} dropdown">
+            <a href="{{ child.url }}" class="external dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ child.name }} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              {% if site.show_parent_in_nav_dropdown? %}
+              <li><a href="{{ child.url }}" class="external ">{{ child.name }}</a></li>
+              {% endif %}
+              {% for child2 in child.nav_children %}
+              <li><a href="{{ child2.url }}" class="external ">{{ child2.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+      <!-- /main nav -->
+    </div>
+  </div>
+</header>

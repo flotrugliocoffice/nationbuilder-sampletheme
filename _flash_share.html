@@ -1,0 +1,53 @@
+<div id="flashModal" class="flash-share modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body clearfix">
+        <div class="share-left">
+          <img src="share.png" alt="Share" />
+          <h2 class="headline" data-key="{{ flash.key }}">
+
+            {{ flash.message | replace: 'Welcome!', 'Benvenuto!' | replace: 'Thank you for contributing!', 'Grazie per aver contribuito!' | replace:'Thank you.  Someone will be in touch with you soon.' , 'Grazie. Qualcuno ti contatterà presto.' | replace:'Your RSVP was canceled', 'La tua iscrizione è stata cancellata' | replace:'Signed in', 'Accesso eseguito' | replace:'Your account is activated', 'Il tuo account è attivato' | replace: 'Signed out', 'Disconnesso' | replace: 'Thank you', 'Grazie' | replace: 'Stopped following', 'Smesso di seguire' | replace: 'Please check your e-mail for a link to activate your account', 'Controlla la tua e-mail per un link per attivare il tuo account' | replace:'Thank you for signing', 'Grazie per esserti iscritto' | replace:'Grazie for signing', 'Grazie per avert sottoscritto la carta' | replace:'Thanks for your interest', 'Grazie per il tuo interesse.' | replace:'Thanks for signing', 'Grazie per la firma' | replace: 'Thanks for letting us know', 'Grazie per averci fatto sapere' | replace: 'Your pledge was removed', 'Il tuo impegno è stato rimosso' | replace:'Thank you for your support!', 'Grazie!' | replace:'Saved RSVP', 'Iscrizione salvata' | replace:'Thank you for RSVP', 'Grazie' | replace:'Your RSVP was un canceled', 'Abbiamo ripristinato la tua iscrizione' }}
+
+          </h2>
+          <span style="display: none;">
+            Condividi con i tuoi amici, ti potrebbero raggiungere.
+            Un link sarà incluso nel messaggio e potrai modificarlo prima di inviare il tuo invito..</span>
+        </div>
+        <div class="share-right">
+          <div class="share-btns">
+            <a
+              class="btn btn-default full-width marginbottom"
+              href="mailto:?body={{ flash.page.full_url_with_recruiter }}"
+              >
+              <i class="fa fa-envelope"></i>
+            </a>
+            <a
+              class="btn full-width facebook marginbottom"
+              href="https://www.facebook.com/share.php?u={{ flash.page.full_url_with_recruiter }}"
+              ><i class="fa fa-facebook"></i></a
+            >
+            <a class="btn full-width twitter marginbottom" href="{{ flash.page.tweet_url }}"><i class="fa fa-twitter"></i></a>
+            <a
+              class="btn full-width whatsapp marginbottom"
+              href="https://api.whatsapp.com/send?text={{ flash.page.full_url_with_recruiter }}"
+              ><i class="fa fa-whatsapp"></i></a
+            >
+          </div>
+          <button type="button" class="h6 close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">Chiudi</span>
+          </button>
+        </div>
+      </div>
+      <!-- /.share-btns -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script type="text/javascript">
+  $(window).load(function() {
+    $('#flashModal').modal('show');
+  });
+</script>

@@ -1,0 +1,119 @@
+<style>
+  .events {
+    background: #fff;
+    border-radius: 6px;
+    padding: 2rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .events {
+      margin-top: -70px;
+      border: 1px solid #e2e3e0;
+    }
+  }
+
+  .page-head {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: url('{{ attachment.url }}') no-repeat fixed center center / cover  transparent;
+  {% endif %}
+  {% endfor %}
+  }
+  .page-head .overlay {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: rgb(209,75,143);
+  background: -moz-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: -webkit-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d14b8f",endColorstr="#0079c1",GradientType=1);
+  {% endif %}
+  {% endfor %}
+  }
+
+</style>
+<div class="page-head parallax">
+  <div class="overlay">
+    <div class="container">
+      <div class="row page-head-title text-center">
+        <div class="col-lg-12">
+          <h1>{{ event.name }}</h1>
+          {% if event.event.has_venue? %}
+          <div class="event-venue">
+            {% if event.event.has_venue_address? %}
+            <p>
+            {{ event.event.venue_address.location }}
+            {% else %}
+            {{ event.event.venue_name }}
+            {% endif %}
+            </p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-base">
+  <div class="no-overlay">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div id="content">
+            <div class="event-info">
+              <strong>{{ event.event.local_start_at | date: '%A, %B %d, %Y at %I:%M %p' }}
+                {% if event.event.is_multi_day? %}
+                through {{ event.event.local_end_at | event_date }}
+                {% endif %}
+                {% if event.event.is_ticket_required? %}
+                &middot; {{ event.event.ticket_price_with_currency }}
+                {% elsif event.event.is_user_ticket_required? %}
+                &middot; {{ event.event.user_ticket_price_with_currency }}
+                {% endif %}
+                {% if event.event.show_guests? and event.event.rsvps_count > 0 %}
+                &middot;
+                <a href="{{ event.url }}">{{ event.event.rsvps_count }} rsvp{% if event.event.rsvps_count > 1 %}s{% endif %}</a>
+                {% endif %}
+              </strong>
+              {% if event.event.has_venue? %}
+              <div class="event-venue">
+                {% if event.event.has_venue_address? %}
+                <a href="{{ event.event.venue_address.google_map_link }}">{{ event.event.venue_name }}</a>
+                a
+                {{ event.event.venue_address.location }}
+                {% else %}
+                {{ event.event.venue_name }}
+                {% endif %}
+              </div>
+              {% endif %}
+
+              {% if event.event.content.size > 0 %}
+              <div class="truncate-200" data-truncate="200">
+                {{ event.event.content }}
+              </div>
+              {% endif %}
+
+              {% if event.event.is_maximum_capacity? %}
+              <a class="btn btn-danger" href="{{ event.url }}">Sold out</a>
+              {% elsif event.event.is_past? == false %}
+              {% if event.event.is_ticket_required? %}
+              <a class="submit-link btn btn-primary" href="{{ event.url }}">Buy tickets</a>
+              {% elsif event.event.accept_rsvps? %}
+              <a class="submit-link btn btn-primary" href="{{ event.url }}">RSVP</a>
+              {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 event">
+          <div id="content">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

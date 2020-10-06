@@ -1,0 +1,99 @@
+<style>
+  .page-head {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: url('{{ attachment.url }}') no-repeat fixed center center / cover  transparent;
+  {% endif %}
+  {% endfor %}
+  }
+  .page-head .overlay {
+  {% for attachment in page.attachments %}
+  {% if attachment.file_name contains "header" %}
+  background: url('{{ attachment.url }}') no-repeat fixed center center / cover  transparent !important;
+  {% endif %}
+  background: rgb(209,75,143);
+  background: -moz-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: -webkit-linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  background: linear-gradient(100deg, rgba(209,75,143,1) 0%, rgba(159,23,106,1) 50%, rgba(0,121,193,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d14b8f",endColorstr="#0079c1",GradientType=1);
+  {% endfor %}
+  }
+  .page-head-title {
+    padding-top: 200px;
+  }
+  .content-pages-show-basic {
+    margin-top: 110px !important;
+  }
+</style>
+
+<div class="page-head parallax">
+  <div class="overlay">
+    <div class="container">
+      <div class="row page-head-title text-center">
+        <div class="col-lg-12">
+          <h1>{{page.title}}</h1>
+          {% if page.headline.size > 0 %}
+          <p>{{page.headline}}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% if page.is_homepage? == true and site.page_tags contains "homepage" %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div id="content">
+
+        <div id="intro" class="intro">
+          <div class="text-content">
+            {{ page.basic.content }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% tag "homepage" with "homepage_widget" %}
+{% else %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+
+      <div id="content">
+
+        <div id="intro" class="intro">
+          <div class="text-content">
+            {{ page.basic.content }}
+          </div>
+        </div>
+
+        {% unless page.is_homepage? == true and site.page_tags contains "homepage" %}
+
+        {% include "like_page" %}
+
+        {% endunless %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% if page.show_stream? %}
+{% include "page_stream" %}
+{% endif %}
+{% endif %}
+
+

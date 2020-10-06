@@ -1,0 +1,21 @@
+<div id="flashModal" class="notice {{ flash.key }} modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+				<div class="clearfix">
+					<div class="image"></div>
+					<p>
+						{{ flash.message | replace:'Thank you for contributing!', 'Grazie per aver contribuito!' | replace:'Your RSVP was canceled', 'La tua iscrizione è stata cancellata' | replace:'Signed in', 'Accesso eseguito' | replace:'Your account is activated', 'Il tuo account è attivato' | replace: 'Signed out', 'Disconnesso' | replace: 'Thank you', 'Grazie' | replace: 'Stopped following', 'Smesso di seguire' | replace: 'Please check your e-mail for a link to activate your account', 'Controlla la tua e-mail per un link per attivare il tuo account' | replace:'Thank you for signing', 'Grazie per esserti iscritto' | replace:'Grazie for signing', 'Grazie per avert sottoscritto la carta' | replace:'Thanks for your interest', 'Grazie per il tuo interesse.' | replace:'Thanks for signing', 'Grazie per la firma' | replace: 'Thanks for letting us know', 'Grazie per averci fatto sapere' | replace: 'Your pledge was removed', 'Il tuo impegno è stato rimosso' | replace:'Thank you for your support!', 'Grazie!' | replace:'Saved RSVP', 'Iscrizione salvata' | replace:'Thank you for RSVP', 'Grazie' | replace:'Your RSVP was un canceled', 'Abbiamo ripristinato la tua iscrizione' }}
+					</p>
+        	<button type="button" class="btn btn-default close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Close</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#flashModal').modal('show');
+  });
+</script>

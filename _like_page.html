@@ -1,0 +1,13 @@
+{% assign email_subject = site.name | append: ' - ' | append: page.headline %} {% assign email_body = null %}
+{% if page.excerpt != blank %} {% assign email_body = page.excerpt %} {% endif %}
+<div class="like-page clearfix ">
+  <h5 class="accent">Condividi su</h5>
+  <div class="sharetable">
+    <ul class="sharetable social-links text-center item_left">
+      <li><a href="{{ page.tweet_url }}"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="https://www.facebook.com/share.php?u={{ page.full_url_with_recruiter }}"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="https://api.whatsapp.com/send?text={{ page.full_url_with_recruiter}}"><i class="fa fa-whatsapp"></i></a></li>
+      <li><a href="mailto:?subject={{ email_subject }}&body={% if email_body %}{{ email_body|strip_html }}%0D%0A{% endif %}{{ page.full_url_with_recruiter }}"><i class="fa fa-envelope"></i></a></li>
+    </ul>
+  </div>
+</div>

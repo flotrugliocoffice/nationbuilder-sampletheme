@@ -1,0 +1,4200 @@
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base: #02004D;
+$gray-darker: #353371;
+$gray-dark: lighten($gray-base, 20%) !default;
+$gray: #B6C5D7;
+$gray-light: #DAE1E6;
+$gray-lighter: #F3F6F7;
+
+$brand-primary: #0FE0B1;
+$brand-primary-lighter: lighten(desaturate(adjust-hue($brand-primary, 1.4928), 16.0191), 47.6471);
+
+// These stay the same in all the variations
+
+$brand-success: $brand-primary;
+$brand-info: #00B4D9;
+$brand-warning: #E1F81C;
+$brand-danger: #FF4845;
+
+// These are social media brand colours
+
+$facebook: #3b5998;
+$twitter: #4099FF;
+$whatsapp:				#25d366;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+// Background color for `<body>`.
+$body-bg: #fff !default;
+
+// Global text color on `<body>`.
+$text-color: rgba(2, 0, 78, 0.8);
+$secondary-text-color: rgba(2, 0, 78, 0.3);
+$accent-text-color: $brand-primary;
+
+// Global textual link color.
+$link-color: $brand-primary !default;
+
+// Link hover color set via `darken()` function.
+$link-hover-color: $link-color;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-font-weight: 700;
+
+$btn-default-color: rgba(255, 255, 255, 0.8);
+$btn-default-bg: $gray-base;
+$btn-default-border: $gray-base;
+
+$btn-primary-color: $btn-default-color;
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: $brand-primary;
+
+$btn-success-color: $btn-default-color;
+$btn-success-bg: $brand-success !default;
+$btn-success-border: $brand-success;
+
+$btn-info-color: $btn-default-color;
+$btn-info-bg: $brand-info !default;
+$btn-info-border: $brand-info;
+
+$btn-warning-color: $btn-default-color;
+$btn-warning-bg: $brand-warning !default;
+$btn-warning-border: $brand-warning;
+
+$btn-danger-color: $btn-default-color;
+$btn-danger-bg: $brand-danger !default;
+$btn-danger-border: $brand-danger;
+
+$btn-link-disabled-color: $gray-light !default;
+
+$secondary-body-font-size: 			 13px;
+
+$btn-gray-color:                 $gray-darker;
+
+// Bootstrap components
+@import "bootstrap";
+
+// NationBuilder components
+@import "icons"; // NB-specific icons
+@import "framework_countdown2"; // Moneybomb page countdown timer styles
+@import "updates"; // Style updates and additions for site components
+@import "cp_nav";
+
+
+// Mixins
+// --------------------------------------------------
+
+@mixin background-opacity($color, $opacity: 0.3) {
+	background: $color; /* The Fallback */
+	background: rgba($color, $opacity);
+}
+
+@mixin label-variant($color) {
+  border-color: $color;
+  color: $color;
+
+  &[href] {
+	&:hover,
+	&:focus {
+	  border-color: darken($color, 10%);
+	  color: darken($color, 10%);
+	}
+  }
+}
+
+
+//
+// The basics
+// --------------------------------------------------
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.main-container{
+	padding: 45px 0;
+	@media screen and (min-width: $screen-tablet){
+		padding: 63px 0;
+	}
+	@media screen and (min-width: $screen-desktop){
+		padding: 80px 0;
+	}
+}
+
+.interior-widget {
+	.form-control,
+	.form-group>select,
+	#donation_amount_other,
+	#pledge_amount_other {
+		padding-top: 9px;
+		padding-bottom: 9px;
+	}
+}
+
+.icon-cc {
+  margin: 0 5px 15px 0
+}
+
+//
+// Pages that have a pale background instead of white
+// --------------------------------------------------
+
+.page-profiles-show,
+.page-signups-edit,
+.page-type-faq,
+.page-type-calendar,
+.page-type-donation,
+.page-type-find-friends,
+.page-type-followers,
+.page-type-follows,
+.page-type-recruiting,
+.page-users-password-resets-new-wide,
+.page-user-sessions-new-wide,
+.page-users-accounts-new-wide{
+	@include background-opacity($gray-light, 0.2);
+	.main-container{
+		padding-bottom: 36px;
+	}
+}
+
+
+//
+// Typography
+// --------------------------------------------------
+
+p{
+	font-size: 13.5px;
+	line-height: 18px;
+	margin-bottom: 18px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-weight: 300;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a{
+	color: $text-color;
+}
+
+h2, .h2{
+	line-height: 36px;
+}
+
+h2.headline{
+	margin: 0 0 18px 0;
+	font-weight: 500;
+}
+
+h3, .h3, h4, .h4{
+	line-height: 27px;
+}
+
+h6, .h6{
+	font-size: 9px;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+h4, .h4, h5, .h5, h6, .h6{
+	margin-top: 9px;
+	margin-bottom: 9px;
+}
+
+blockquote{
+	margin: 36px auto;
+	padding: 18px 0;
+	color: $brand-primary;
+	position: relative;
+	text-align: center;
+	font-weight: 500;
+	font-family: $headings-font-family;
+	border: 0;
+	font-size: 18px;
+	line-height: 27px;
+	&:before{
+		content: '';
+		width: 45px;
+		height: 1px;
+		background: $brand-primary;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: 0px auto;
+	}
+	&:after{
+		content: '';
+		width: 45px;
+		height: 1px;
+		background: $brand-primary;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0px auto;
+	}
+	p{
+		font-size: 18px;
+		line-height: 27px;
+	}
+	@media screen and (min-width: $screen-sm-min){
+		max-width: 558px;
+		padding: 36px 0;
+		font-size: 22.5px;
+		&:before{
+			width: 90px;
+			height: 1px;
+		}
+		&:after{
+			width: 90px;
+			height: 1px;
+		}
+		p{
+			font-size: 22.5px;
+		}
+	}
+}
+
+.text-content,
+.content{
+	ol, ul{
+		font-size: 1.5em;
+		line-height: 18px;
+		margin-bottom: 18px;
+		li{
+			margin-bottom: 9px;
+		}
+	}
+}
+
+@media screen and (min-width: $screen-desktop){
+
+	p{
+		font-size: 18px;
+		line-height: 27px;
+	}
+
+	h1, .h1{
+		font-size: 45px;
+		line-height: 54px;
+	}
+	h2, .h2{
+		font-size: 36px;
+		line-height: 45px;
+	}
+	h3, .h3{
+		font-size: 27px;
+		line-height: 36px;
+	}
+	h4, .h4{
+		font-size: 22.5px;
+		line-height: 27px;
+	}
+	h5, .h5{
+		font-size: 18px;
+		line-height: 27px;
+	}
+
+	.text-content,
+	.content{
+		ol, ul{
+			font-size: 2em;
+			line-height: 27px;
+		}
+	}
+}
+
+strong, .strong{
+	font-weight: 700;
+}
+
+small, .small{
+	font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1.strong, h1 strong, h2.strong, h2 strong, h3.strong, h3 strong, h4.strong, h4 strong, h5.strong, h5 strong, h6.strong, h6 strong{
+	font-weight: 500;
+}
+
+hr {
+  margin-top:    18px;
+  margin-bottom: 18px;
+}
+
+//
+// Helpers
+// -----------------------------------------
+
+img {
+	max-width: 100%;
+}
+
+.padtop {
+	padding-top: 18px;
+}
+
+.padbottom {
+	padding-bottom: 18px;
+}
+
+.padtopless {
+	padding-top: 9px;
+}
+
+.padbottomless {
+	padding-bottom: 9px;
+}
+
+.padtopmore {
+	padding-top: 36px;
+}
+
+.padbottommore {
+	padding-bottom: 36px;
+}
+
+.margintopless {
+	margin-top: 9px;
+}
+
+.margintop {
+	margin-top: 18px;
+}
+
+.margintopmore {
+	margin-top: 36px;
+}
+
+.marginbottomless {
+	margin-bottom: 9px;
+}
+
+.marginbottom {
+	margin-bottom: 18px;
+}
+
+.marginbottommore {
+	margin-bottom: 36px;
+}
+
+.center {
+	text-align: center;
+}
+.left{
+	text-align: left;
+}
+
+.accent, .accent a{
+	color: $brand-primary;
+}
+
+.gray-base, .gray-base a{
+	color: $gray-base;
+}
+
+.inverse, .inverse a{
+	color: white;
+}
+
+.secondary, .secondary a{
+	color: $secondary-text-color;
+}
+
+.warning, .warning a{
+	color: $brand-warning;
+}
+
+.danger, .danger a{
+	color: $brand-danger;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+//
+// Style necessary for header animation
+// --------------------------------------------------
+.fade-in {
+	opacity:0;
+	-webkit-animation:fadeIn ease-in 1;
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:0.3s;
+	-moz-animation-duration:0.3s;
+	animation-duration:0.3s;
+
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+
+//
+// Splash header
+// --------------------------------------------------
+.splash {
+	background: white;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	min-height: 360px;
+	text-align: center;
+	padding: 54px 0;
+	opacity: 0;
+	.splash-background{
+		background-size: cover;
+		background-position: center;
+		position: absolute;
+		top: 54px;
+		left: 15px;
+		right: 15px;
+		bottom: 54px;
+		border-radius: 9px;
+		@extend .container;
+
+		@media (min-width: $screen-sm-min) {
+		  width: 95vw;
+		}
+
+		.overlay{
+			@include background-opacity($gray-base, 0.3);
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			border-radius: 9px;
+		}
+		h1{
+			position: absolute;
+			top: 30%;
+			width: 98%;
+			right: 0;
+			left: 0;
+			margin: 0 auto;
+			text-shadow: 0 0 11px rgba($gray-base, 0.75);
+			@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+			  position: relative;
+			  top: 27vh;
+			}
+		}
+	}
+	@media screen and (min-width: $screen-sm-min){
+		background-attachment: fixed;
+	}
+}
+a.splash-arrow {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  margin-left: -12px;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  -webkit-animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+a.splash-arrow:hover {
+  text-decoration: none;
+  bottom: -40px;
+}
+
+.splash-wrapper {
+	opacity: 0;
+}
+
+//
+// Shadow styles
+// --------------------------------------------------
+
+.alpha-shadow{
+	box-shadow: 0 5px 17px rgba(0,0,0,0.13);
+}
+.beta-shadow{
+	box-shadow: 0 0 5px rgba(0,0,0,0.13);
+}
+
+//
+// Navbar styles (_navbar.scss)
+// --------------------------------------------------
+
+.nav{
+	a:focus{
+		outline: 0;
+		text-decoration: none;
+		color: $brand-primary;
+	}
+	hr{
+		border-top: 1px solid white;
+	}
+	.open{
+		padding-bottom: 18px;
+	}
+	.open > a {
+		padding: 9px 0;
+	    &,
+	    &:hover,
+	    &:focus {
+	    	border-color: transparent;
+	  }
+	}
+	@media screen and (min-width: $grid-float-breakpoint){
+		.open{
+			padding-bottom: 0;
+		}
+		.open > a {
+			padding-bottom: 0;
+	    &,
+	    &:hover,
+	    &:focus {
+	      background-color: $nav-link-hover-bg;
+	      border-color: $link-color;
+	      border: 0;
+	      padding: 9px 1px 0;
+	      border-bottom: 1px dashed $link-color;
+	    }
+	  }
+	}
+}
+
+.navbar{
+	background: white;
+	margin-bottom: 0;
+	border: 0;
+	@media screen and (min-width: $screen-sm-min){
+		position: static !important;
+	}
+}
+
+.navbar-brand {
+	line-height: $line-height-computed;
+	height: auto;
+	min-height: $navbar-height;
+	color: $brand-primary;
+
+	&.site-logo{
+		padding: 0;
+	}
+
+	img{
+		max-height: 45px;
+	}
+
+	h3{
+		margin: 0;
+	}
+
+	@media screen and (max-width: ($screen-tablet - 1)) {
+		max-width: calc(100% - 95px);
+	}
+	@media screen and (min-width: $grid-float-breakpoint){
+		padding: 13.5px 0 0;
+		min-height: 0;
+
+		.navbar > .container &,
+		.navbar > .container-fluid & {
+			margin-left: 0;
+		}
+	}
+	@media screen and (min-width: $screen-desktop){
+		padding-top: 0px;
+	}
+
+}
+
+.navbar-header{
+	z-index: $zindex-navbar-fixed;
+	position: relative;
+	background: $navbar-default-bg;
+
+	@media screen and (min-width: $grid-float-breakpoint){
+		float: none;
+
+		.header-buttons{
+			float: right;
+			padding-top: 4.5px;
+			.btn-default{
+				margin-left: 18px;
+			}
+		}
+		.follow-buttons{
+			position: absolute;
+			right: 40px;
+			h6{
+				display: inline-block;
+				margin-right: 18px;
+				font-size: 13.5px;
+				opacity: .5;
+				margin-top: 13.5px;
+			}
+			a{
+				font-size: 13.5px;
+				margin-left: 9px;
+				color: $brand-primary;
+			}
+		}
+		.btn + .follow-buttons {
+			right: 0;
+		}
+	}
+	@media screen and (min-width: $grid-float-breakpoint){
+		padding-top: 9px;
+	}
+}
+
+.navbar-toggle {
+	padding: 0;
+	margin-top: 22.5px;
+	margin-bottom: 22.5px;
+	border: 0;
+	border-radius: 0;
+	img{
+		height: 18px;
+		width: auto;
+	}
+	.profile-photo{
+		width: 27px;
+		height: 27px;
+		border-radius: 30px;
+		margin-top: -4.5px;
+		margin-bottom: -4.5px;
+	}
+}
+
+.navbar-nav{
+	overflow: scroll;
+	text-align: center;
+	background: white;
+	> li > a {
+		font-size: 18px;
+		font-weight: 500;
+		font-family: $headings-font-family;
+		padding-top: 0px;
+		padding-bottom: 27px;
+		line-height: 27px;
+		color: $secondary-text-color;
+	}
+
+	.btn{
+		display: block;
+		max-width: 200px;
+		margin: 0px auto 27px;
+	}
+
+	@media (max-width: $grid-float-breakpoint-max) {
+
+    // Dropdowns get custom display when collapsed
+    .open .dropdown-menu {
+    	> li > a{
+    		padding: 0px 18px 18px;
+    	}
+    	> li > a {
+    		line-height: 27px;
+    		&:hover,
+    		&:focus {
+    			background-image: none;
+    		}
+    	}
+    }
+  }
+
+  @media screen and (min-width: $grid-float-breakpoint){
+  	position: relative;
+  	height: auto;
+  	padding-top: 0;
+  	text-align: left;
+  	overflow: visible;
+  	position: static;
+
+  	>li {
+  		position: static;
+  	}
+
+  	>li > a{
+  		font-size: 13.5px;
+  		padding: 8px 0;
+  		margin-right: 13.5px;
+  		border: 1px dashed transparent;
+  	}
+  }
+
+}
+
+
+#supporter-nav-collapse{
+	.navbar-nav{
+		> li > a{
+			font-weight: 300;
+		}
+		li.gray-base {
+			a{
+				color: $gray-base;
+			}
+		}
+		li.accent {
+			a{
+				color: $accent-text-color;
+			}
+		}
+	}
+	@media screen and (min-width: $screen-tablet){
+		position: absolute;
+	  right: -18px;
+	  z-index: 1060;
+		.navbar-nav{
+		background: white;
+		text-align: right;
+		padding: 18px;
+		width: 180px;
+		> li {
+				float: none;
+			}
+			> li > a{
+				padding: 0;
+			}
+			hr{
+				margin: 9px 0;
+			}
+		}
+	}
+}
+
+.supporter-nav{
+	@media screen and (min-width: $screen-tablet){
+		display: inline-block;
+		margin: 13.5px 0 0 13.5px;
+
+	}
+}
+
+.dropdown-menu{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border-radius: 0;
+	font-size: 13.5px;
+
+	.container {
+			> li > a{
+			color: $secondary-text-color;
+			line-height: 27px;
+			font-family: $headings-font-family;
+			font-weight: 300;
+			letter-spacing: 1px;
+		}
+	}
+
+	li:last-child a{
+		padding-bottom: 27px !important;
+	}
+
+	@media screen and (min-width: $screen-tablet){
+		width: 100%;
+	left: 0;
+	right: 0;
+	top: 81px;
+	border: 0;
+	text-align: left;
+	padding-bottom: 18px;
+	box-shadow: none;
+
+	.container {
+		> li{
+			display: inline-block;
+			margin-right: 18px;
+			> a{
+				letter-spacing: 0;
+			}
+		}
+	  }
+	}
+	@media screen and (min-width: $screen-desktop){
+		top: 94.5px;
+	}
+
+}
+
+.nav-fill {
+	display: block;
+	height: 72px;
+	@media screen and (min-width: $screen-tablet){
+		height: 0;
+	}
+}
+
+.container div.nav-follow-padding {
+	@media screen and (min-width: $screen-tablet) {
+		padding-right: 150px;
+	}
+}
+
+// Footer
+// --------------------------------------------------
+
+footer{
+	padding: 81px 0 18px;
+	font-size: 13.5px;
+	background: white;
+	p{
+		font-size: 13.5px;
+		line-height: 18px;
+	}
+	.footer-text{
+		margin-bottom: 36px;
+	}
+	.email-signup{
+		max-width: 360px;
+	}
+	.logo{
+		text-align: center;
+		margin-top: 36px;
+	}
+	.footer-nav{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		> li{
+			margin-bottom: 45px;
+		}
+	}
+	@media screen and (min-width: $screen-sm-min){
+		text-align: right;
+		.footer-text{
+			text-align: left;
+		}
+		.email-signup{
+			float: right;
+		}
+		.footer-nav{
+			li{
+				display: inline-block;
+				margin-left: 27px;
+				h5{
+					font-size: 13.5px;
+				}
+			}
+		}
+		.logo{
+			text-align: right;
+		}
+	}
+}
+
+
+// Featured Content Slider
+// --------------------------------------------------
+
+.carousel{
+	@media screen and (min-width: $screen-tablet){
+		padding-top: 63px;
+	}
+	@media screen and (min-width: $screen-desktop){
+		padding-top: 80px;
+	}
+}
+
+.carousel-bg{
+	background-size: cover;
+	background-position: center;
+	@media screen and (min-width: $screen-tablet){
+		padding: 99px 0;
+	}
+}
+
+.carousel-image {
+	display: block;
+	padding-top: 100%;
+	margin-bottom: 9px;
+	background-size: cover;
+	background-position: center;
+	@media screen and (min-width: $screen-sm-min){
+		padding-top: 0;
+		height: 369px;
+		margin-bottom: 0;
+	}
+	@media screen and (min-width: $screen-md-min){
+		height: 414px;
+	}
+}
+
+// if there is no headline on the featured content slider
+.full-feature{
+	.carousel-image{
+		margin-bottom: 0;
+		@media screen and (max-width: $screen-xs-max){
+			padding: 0;
+			height: 470px;
+		}
+	}
+}
+
+.carousel-caption {
+	position: relative;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	height: 171px;
+	border-radius: 5px;
+	padding: 27px 18px 54px;
+	font-weight: 300;
+	text-shadow: none;
+	display: block;
+	background-color: $gray;
+	a:hover{
+		text-decoration: none;
+	}
+	a, span {
+		color: rgba(255,255,255,0.8);
+	}
+	h5 {
+		line-height: 18px;
+	}
+	@media screen and (min-width: $screen-tablet){
+		height: 369px;
+		padding: 36px;
+		display: table;
+		h5 {
+			display: table-cell;
+			vertical-align: middle;
+			font-size: $font-size-h4;
+			line-height: 27px;
+		}
+	}
+	@media screen and (min-width: $screen-desktop){
+		height: 414px;
+		h5{
+			font-size: $font-size-h3;
+			line-height: 27px;
+		}
+	}
+}
+
+.carousel-indicators {
+	bottom: 18px;
+	li {
+		width: 9px;
+		height: 9px;
+		margin: 1px 9px;
+		@include background-opacity($brand-primary, 0.5);
+		border: 0px;
+	}
+	.active {
+		margin: 1px 9px;
+		width: 9px;
+		height: 9px;
+		background-color: $carousel-indicator-active-bg;
+		transition: 1s;
+	}
+	@media screen and (min-width: $screen-tablet){
+		bottom: 18px;
+	}
+}
+
+
+// Modals (modals.scss)
+// --------------------------------------------------
+
+.modal-backdrop{
+	background-color: $gray-base;
+}
+.modal-header{
+	border: 0;
+	min-height: 18px;
+}
+.modal-content{
+	border-radius: $border-radius-base;
+}
+.modal-body{
+	padding: 18px;
+	.form-errors{
+		ul{
+			background: $brand-danger;
+			text-align: left;
+			padding: 9px 36px 9px 45px;
+			margin: 0 -18px;
+			list-style-type: none;
+			font-size: 13.5px;
+			color: white;
+			background-image: url(bell.png);
+			background-repeat: no-repeat;
+			background-position: 18px 13.5px;
+			@media screen and (min-width: $screen-sm-min){
+				padding: 9px 36px 9px 72px;
+				margin: 0 -36px;
+			}
+		}
+	}
+	@media screen and (min-width: $screen-sm-min){
+		padding: 18px 36px;
+	}
+}
+.modal-dialog {
+	@media (min-width: $screen-sm-min){
+	  width: 540px;
+	  margin: 30px auto;
+	}
+}
+.close{
+	font-size: 18px;
+}
+
+// Buttons (buttons.scss)
+// --------------------------------------------------
+
+.btn {
+	@include button-size(8px, 27px, 13.5px, 18px, 100px);
+	border: 1px solid transparent;
+
+	&,
+	&:active,
+	&.active {
+		&:focus,
+		&.focus {
+			@include tab-focus;
+		}
+	}
+
+	&:active,
+	&.active {
+		box-shadow: none;
+	}
+
+}
+
+.btn-default{
+	background: $btn-default-bg;
+	border-color: $btn-default-border;
+
+	&:hover,
+  &:focus,
+  &.focus {
+	background-color: darken($btn-default-bg, 5%);
+  }
+}
+
+.btn-ghost{
+	background: white;
+	color: $secondary-text-color;
+	border-color: $secondary-text-color;
+	&:hover, &:focus{
+		background: $secondary-text-color;
+		border-color: $secondary-text-color
+	}
+}
+
+.btn-gray-light{
+	background: $gray-light;
+	color: white;
+	border-color: $gray-light;
+	&:hover, &:focus{
+		background: $gray;
+		border-color: $gray;
+	}
+}
+
+.btn-lg {
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, 27px, 100px);
+}
+
+.btn.facebook{
+	background: $facebook;
+	border-color: $facebook;
+	color: white;
+	&:hover, &:focus{
+		background: darken($facebook, 5);
+		border-color: darken($facebook, 5);
+	}
+}
+.btn.twitter{
+	background: $twitter;
+	border-color: $twitter;
+	color: white;
+	&:hover, &:focus{
+		background: darken($twitter, 5);
+		border-color: darken($twitter, 5);
+	}
+}
+.btn.whatsapp{
+	background: $whatsapp;
+	border-color: $whatsapp;
+	color: white;
+	&:hover, &:focus{
+		background: darken($whatsapp, 5);
+		border-color: darken($whatsapp, 5);
+	}
+}
+
+.btn.full-width{
+	width: 100%;
+}
+
+@media screen and (min-width: $screen-sm-min){
+	.btn-lg-tablet{
+	@include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, 27px, 100px);
+	}
+}
+
+// Inputs
+// --------------------------------------------------
+
+.form-group{
+	position: relative;
+	margin-bottom: 9px;
+}
+
+.form-control {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: $text-color;
+  padding: 18px 18px 4.5px;
+  display: block;
+  border: 1px solid $gray;
+  background: white;
+  border-radius: 0;
+  height: 45px;
+  box-shadow: none;
+	&:focus {
+		outline: none;
+		border: 1px solid $brand-primary;
+		box-shadow: none;
+	}
+	&.quantity, &.equal-padding {
+		padding: 18px;
+		margin-right: 10px;
+	}
+	@media only screen and (max-device-width: 736px) {
+		&:focus {
+			font-size: 16px;
+			padding-top: 15.5px;
+		}
+	}
+
+}
+
+label{
+  font-size: 13.5px;
+  font-weight: 500;
+  position: absolute;
+  pointer-events: none;
+  top: 13.5px;
+  left: 18px;
+  color: $secondary-text-color;
+  opacity: 1;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+  text-align: left;
+  z-index: 3;
+}
+
+/* active state */
+.form-control:focus ~ label,
+.form-control:active ~ label,
+.form-control.used ~ label,
+select ~ label,
+.form-control.used ~ span ~ label {
+  top: 4.5px;
+  font-size: 9px;
+  background-size: 4px;
+  background-position: 2px 2.5px;
+}
+.form-control:focus ~ .error-message,
+.form-control:active ~ .error-message,
+.form-control.used ~ .error-message {
+  // assume the error is being fixed and hide the error message
+  visibility: hidden;
+}
+
+label[for="nation_signup_card_expires_on"]{
+	top: 4.5px;
+  font-size: 9px;
+}
+
+.form-control:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	-webkit-text-fill-color: $gray-base !important;
+}
+
+.form-control:required + label{
+	background-image: url(asterisk.png);
+	background-repeat: no-repeat;
+	background-position: 2px 4.5px;
+	padding-left: 18px;
+	left: 9px;
+	background-size: 9px;
+}
+.form-control:active+label,
+.form-group>select:active+label,
+#donation_amount_other:active+label,
+#pledge_amount_other:active+label,
+.form-control:focus+label,
+.form-group>select:focus+label,
+#donation_amount_other:focus+label,
+#pledge_amount_other:focus+label {
+	background-position: 2px 2.5px;
+}
+
+.form-group  {
+	& > select { // Workaround for not being able to attach class names to Liquid generated select boxes
+		@extend .form-control;
+		&[id*='_card_expires_on'] {
+			width: auto;
+			display: inline-block;
+			margin-right: 5px;
+			&:last-child, &:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.form-group.form-inline {
+	strong {
+		font-size: 1.5em;
+	}
+}
+
+select.form-control {
+	background-image: url(dropdown.png);
+	background-repeat: no-repeat;
+	background-position: 95% center;
+}
+
+.form-group > select{
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+   appearance:        none;
+	line-height: 1.5;
+}
+
+
+textarea{
+	min-height: 108px;
+	padding: 18px 27px;
+}
+
+input[type="file"]{
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  z-index: -1;
+
+	+ label{
+		background: white;
+		width: 100%;
+		min-height: 72px;
+		border: 1px dashed $gray;
+		position: relative;
+		left: 0;
+		top: 0;
+		pointer-events: all;
+		padding: 18px 27px 18px 90px;
+		opacity: 1;
+
+		&:before{
+			content: url(upload.png);
+			padding: 9px 9px 4px;
+			background: $brand-primary;
+			position: absolute;
+			top: 18px;
+			left: 27px;
+		}
+	}
+}
+
+.option-heading {
+	margin-bottom: -10px !important;
+}
+
+.radio, .checkbox{
+	margin-top: 18px;
+	margin-bottom: 18px;
+	@include clearfix;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: 0px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+.radio label, .checkbox label{
+	position: relative;
+	float: left;
+	top: 0;
+	pointer-events: all;
+	left: 0;
+	padding-left: 27px;
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"]{
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+   appearance:        none;
+	height: 18px;
+	width: 18px;
+	background: $gray-base;
+	margin-left: 0;
+	opacity: 0.3;
+	border: 1px solid $gray-base;
+	z-index: 4;
+
+	&:checked{
+		background-color: $brand-primary;
+		background-image: url(check.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 9px;
+		background-color: transparent;
+		border: 1px solid $gray-base;
+		opacity: 1;
+	}
+}
+
+.radio input[type="radio"]{
+	border-radius: 100px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+}
+
+.labeled-tags{
+	label{
+		margin-top: 0;
+	}
+}
+
+.radio-inline input[type="radio"]{
+	display: none;
+
+
+	&:checked{
+		+ label{
+			color: white;
+			border-color: $brand-primary;
+			background: $brand-primary;
+		}
+	}
+}
+
+.radio-inline, .checkbox-inline {
+	cursor: default;
+	padding: 0;
+	//compensate for the margins
+	margin-left: -4.5px;
+
+	& > span {
+		white-space: nowrap;
+		display: inline-block;
+		position: relative;
+	}
+	label.radio{
+		@extend .btn;
+		position: relative;
+		text-align: center;
+		color: $gray;
+		opacity: 1;
+		line-height: 45px;
+		margin: 0 9px 9px 0;
+		background: white;
+		border: 1px solid $gray;
+		position: relative;
+		height: 45px;
+		width: 81px;
+		pointer-events: all;
+		padding: 0;
+		cursor: pointer;
+		display: inline-block;
+		left: 0;
+		top: 0;
+		&:hover{
+			color: $gray;
+		}
+	}
+	label.checkbox {
+		cursor: pointer;
+		display: inline-block;
+		margin: 0 30px 0 0;
+	}
+
+	.text{
+		margin-left: 4.5px;
+	}
+}
+
+.checkbox-inline input[type="checkbox"]{
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+   appearance:        none;
+	opacity: 0;
+	+ label{
+		@extend .btn;
+		margin: 0;
+	top: 0;
+	left: 0;
+	background: $brand-primary;
+	margin-bottom: 9px;
+	margin-right: 9px;
+	color: white;
+	position: relative;
+	opacity: 1;
+	cursor: pointer;
+	pointer-events: all;
+	&:hover{
+		background: darken($brand-primary, 5);
+	}
+	}
+	&:checked{
+		+ label{
+		background: darken($brand-primary, 20);
+	  }
+  }
+}
+
+// Toggle switches on the flash share
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 27px;
+  top: 0;
+  left: 0;
+  pointer-events: all;
+  opacity: 1;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $gray-light;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "\2713";
+  font-family: responsive;
+  text-align: center;
+  line-height: 18px;
+  color: $brand-primary;
+  height: 18px;
+  width: 18px;
+  left: 4.5px;
+  bottom: 5.5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  font-size: 9px;
+}
+
+.slider.facebook:before{
+	color: $facebook;
+	content: '\f09a';
+}
+.slider.twitter:before{
+	color: $twitter;
+	content: "\f099";
+}
+
+input:checked + .slider {
+  background-color: $brand-primary;
+  &.facebook{
+	background: $facebook;
+  }
+  &.twitter{
+	background: $twitter;
+  }
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $brand-primary;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 36px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+// Makes the signup form button in the footer fit nicely with the input
+
+.email-signup{
+	.input-group-btn:last-child>.btn{
+		border-radius: 27px;
+		margin-left: 9px;
+		height: 45px;
+	}
+}
+
+//
+// Wrapper for forms on desktop
+// --------------------------------------------------
+
+.page-type-endorsement,
+.page-type-feedback,
+.page-type-moneybomb,
+.page-type-petition,
+.page-type-survey,
+.page-type-volunteer-signup,
+.page-type-vote-pledge{
+	.form-wrap{
+		@media screen and (min-width: $screen-sm-min){
+			@include background-opacity($gray-light, 0.3);
+			padding: 27px;
+		}
+		@media screen and (min-width: $screen-md-min){
+			padding: 27px 48px;
+		}
+		hr{
+			border-top: 1px solid #fff;
+		}
+	}
+}
+
+//
+// Form errors
+// -----------------------------------------
+
+.form-error{
+	@extend .danger;
+	font-size: 13.5px;
+}
+.form-group{
+	.form-error{
+		position: absolute;
+		right: 18px;
+		font-size: 9px;
+		top: 4.5px;
+		text-transform: uppercase;
+	letter-spacing: .5px;
+	font-family: $headings-font-family;
+	font-weight: 500;
+	opacity: .5;
+	}
+}
+
+//
+// Notices
+// -----------------------------------------
+
+.flash-share{
+	.modal-header{
+		position: absolute;
+	right: 9px;
+	top: 9px;
+	}
+	.modal-body{
+	padding: 0;
+	.share-left{
+		background: $brand-info;
+		color: rgba(255,255,255,0.8);
+		padding: 36px 27px;
+		border-top-left-radius: 4.5px;
+		border-top-right-radius: 4.5px;
+		font-size: 13.5px;
+		vertical-align: top;
+		h2{
+			color: white;
+		}
+		img{
+			margin-bottom: 18px;
+		}
+	}
+	.share-right{
+		padding: 36px 27px;
+		vertical-align: top;
+		.btn{
+				float: right;
+			}
+			.close{
+				font-size: 13.5px;
+				margin-top: 18px;
+			}
+	}
+  }
+  @media screen and (min-width: $screen-sm-min){
+	.modal-body{
+		display: table;
+		width: 100%;
+		padding: 0;
+		.share-left{
+			display: table-cell;
+			width: 50%;
+			background: $brand-info;
+			color: white;
+			border-bottom-left-radius: 4.5px;
+			border-top-right-radius: 0;
+		}
+		.share-right{
+			display: table-cell;
+			width: 50%;
+		}
+	  }
+  }
+}
+
+.notice{
+	.modal-dialog{
+		margin-top: 72px;
+	}
+	.modal-content{
+		padding: 18px 30px;
+		color: white;
+		background: $brand-primary;
+		border: 0;
+	  text-align: center;
+		.modal-body{
+			padding: 0;
+		}
+		.image{
+			height: 18px;
+			width: 40px;
+			margin: 0px auto 27px;
+			background-image: url(notice-success.png);
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		.close{
+			font-size: 13.5px;
+		float: none;
+		opacity: 1;
+			@extend .btn;
+			@extend .btn-default;
+			@extend .margintopmore;
+		}
+		&.success {
+			background: $brand-success;
+			.image{
+				background-image: url(notice-success.png);
+			}
+		}
+		.info {
+			background: $brand-info;
+			.image{
+				background-image: url(notice-success.png);
+			}
+		}
+		.warning{
+			background: $brand-warning;
+			color: $text-color;
+			.image{
+				background-image: url(notice-success.png);
+			}
+		}
+		.error, .danger {
+			background: $brand-danger;
+			.image{
+				background-image: url(notice-success.png);
+			}
+		}
+		@media screen and (min-width: $screen-md-min){
+			padding: 45px 81px;
+			font-size: 18px;
+		}
+	}
+}
+
+//
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+  border-bottom: 0;
+  > li {
+
+	// Actual tabs (as links)
+	> a {
+		min-width: 144px;
+	  margin-right: 4.5px;
+	  line-height: 27px;
+	  border: 0;
+	  border-radius: 0;
+	  text-align: center;
+	  font-size: 9px;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	  margin-bottom: 1px;
+	  font-weight: 700;
+	  color: $secondary-text-color;
+	}
+
+	// Active state, and its :hover to override normal :hover
+	&.active > a {
+	  &,
+	  &:hover,
+	  &:focus {
+		color: $nav-tabs-active-link-hover-color;
+		@include background-opacity($gray-light,0.2);
+		border: 0;
+	  }
+	}
+  }
+}
+
+//
+// Breadcrumbs
+// --------------------------------------------------
+// We didn't want these in the design so they aren't styled at all
+
+.breadcrumb{
+	display: none;
+}
+
+
+//
+// Tags/labels
+// --------------------------------------------------
+
+
+.label {
+  display: inline-block;
+  padding: 0 4.5px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 18px;
+  border-radius: 9px;
+  border: 1px solid $gray-light;
+  background: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 18px;
+  min-width: 18px;
+  margin-left: 9px;
+}
+.label-default{
+	background: $gray-base;
+	color: white;
+	border-color: $gray-base;
+}
+.label-primary{
+	background: $brand-primary;
+	color: white;
+	border-color: $brand-primary;
+}
+
+// Page tags
+
+.page-tags{
+	text-align: right;
+}
+
+
+//
+// Like page / Sharetable
+// -----------------------------------------
+
+.like-page{
+	padding: 18px 0 13.5px;
+	max-width: 278px;
+
+	h5{
+		float: left;
+	}
+	.sharetable{
+		float: right;
+		font-size: 18px;
+		line-height: 27px;
+		padding-top: 7px;
+		a{
+			display: inline-block;
+			margin-left: 18px;
+		}
+	}
+}
+
+//
+// Tables (_tables.scss)
+// -----------------------------------------
+
+table {
+  background-color: $table-bg;
+  font-size: 13.5px;
+}
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+	margin-bottom: 27px;
+}
+
+.list-group-item {
+  padding: 18px;
+  font-size: 13.5px;
+}
+
+
+//
+// Panels
+// -----------------------------------------
+
+.panel {
+  box-shadow: none;
+}
+// Optional heading
+.panel-heading {
+  border-bottom: 0;
+  @include border-top-radius(0);
+  margin-top: 4.5px;
+  background: transparent;
+}
+
+.panel-group {
+  .panel {
+	@include border-bottom-radius(0);
+
+	+ .panel {
+	  margin-top: -1px;
+	  border-bottom-radius: 0;
+	}
+
+	.panel-heading {
+		border-bottom: 0;
+
+		+ .panel-collapse > .panel-body,
+		+ .panel-collapse > .list-group {
+		  border-top: 0;
+		}
+	  }
+
+	&:last-child{
+		@include border-bottom-radius($panel-border-radius);
+	}
+  }
+}
+
+//
+// Widgets
+// -----------------------------------------
+
+.exterior-widget{
+	margin: 63px 0 0 0;
+	@media screen and (min-width: $screen-sm-min){
+		margin: 81px 0 0 0;
+	}
+}
+
+.interior-widget{
+	padding: 27px 18px;
+	text-align: center;
+	border-radius: 9px;
+
+	h3{
+		margin-top: 0;
+		margin-bottom: 27px;
+
+		a:hover{
+			text-decoration: none;
+		}
+
+	}
+
+	h3.secondary a{
+		@extend .secondary;
+	}
+
+	hr{
+		width: 90px;
+		margin: 17px auto 18px;
+	}
+
+	@media screen and (min-width: $screen-sm-min){
+		padding: 45px 27px;
+		p{
+			text-align: left;
+		}
+	}
+
+	.question-list h3{
+		text-align: center;
+	}
+}
+
+.exterior-widget, .interior-widget{
+	&.brand-primary{
+		background: $brand-primary;
+	}
+	&.text-color{
+		background: $gray-base;
+		color: white;
+		a{
+			color: white;
+		}
+		.bar-text{
+			color: white;
+			h2{
+				color: white;
+			}
+		}
+		.radio label, .checkbox label{
+			color: white;
+			opacity: 0.8;
+		}
+		.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+			background-color: $brand-primary;
+			border: 1px solid $brand-primary;
+
+			&:checked{
+				background-color: $brand-primary;
+				background-image: url(check.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				border: 1px solid $brand-primary;
+			}
+		}
+	}
+	&.brand-primary-lighter{
+		background: $brand-primary-lighter;
+		hr{
+			border-top: 1px solid $secondary-text-color;
+		}
+		.btn a{
+			color: white;
+		}
+	}
+	&.gray{
+		background: $gray;
+		h3{
+			a{
+				color: $text-color;
+			}
+		}
+		hr{
+			border-top: 1px solid white;
+		}
+	}
+	&.gray-light{
+		background: $gray-light;
+		hr{
+			border-top: 1px solid white;
+		}
+	}
+	&.gray-lighter{
+		background: $gray-lighter;
+		h3{
+			a{
+				color: $secondary-text-color;
+			}
+		}
+		hr{
+			border-top: 1px solid $secondary-text-color;
+		}
+	}
+	&.gray-lightest{
+		@include background-opacity($gray-light, 0.3);
+		hr{
+			border-top: 1px solid $secondary-text-color;
+		}
+	}
+}
+
+.widget-page-type-endorsement, .widget-page-type-petition, .widget-page-type-volunteer-signup{
+	.interior-widget{
+		h3{
+			margin-top: 45px;
+		}
+		.collapse{
+			padding: 45px 0 0;
+		}
+	}
+}
+
+@media screen and (min-width: $screen-sm-min){
+	.widget-page-type-faq, .widget-page-type-leaderboard, .widget-page-type-moneybomb{
+		h3{
+			text-align: left;
+		}
+	}
+	.widget-page-type-recruiting{
+		h3{
+			text-align: left;
+		}
+	}
+	.widget-page-type-feedback, .widget-page-type-rules{
+		.interior-widget{
+			text-align: left;
+
+			hr{
+				margin: 18px 0;
+			}
+
+		}
+	}
+	.widget-page-type-feedback{
+		position: relative;
+		.feedback-image-wrap{
+			display: table;
+			width: 100%;
+			.feedback-image, .interior-widget{
+				display: table-cell;
+			}
+			.interior-widget{
+				width: 50%;
+			}
+			.feedback-image{
+				width: 50%;
+			}
+			.absolute-feedback-image{
+				position: absolute;
+				width: 50%;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				background-size: cover;
+				background-position: center;
+			}
+		}
+	}
+	.widget-page-type-question, .widget-page-type-activity-stream{
+		.interior-widget{
+			text-align: left;
+		}
+	}
+	.widget-fill{
+		height: 45px;
+	}
+}
+
+.widget-page-type-blog-post{
+	a{
+		color: white;
+	}
+	@media screen and (min-width: $screen-sm-min){
+		p{
+			text-align: left;
+		}
+		.image{
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		// allows image to dynamically resize to the height of the headline
+		.image-wrap{
+			display: table;
+			width: 100%;
+			margin: 0;
+			.col-sm-8, .col-sm-4{
+				display: table-cell;
+				position: relative;
+				float: none;
+			}
+			.col-sm-4{
+				padding-right: 0;
+			}
+		}
+		.interior-widget{
+			height: 414px;
+			display: table-cell;
+		vertical-align: middle;
+		position: relative;
+		padding-top: 36px;
+		hr{
+			position: absolute;
+			top: 18px;
+			left: 0;
+			right: 0;
+		}
+
+		hr:first-of-type{
+			top: auto;
+			bottom: 18px;
+		}
+		}
+	}
+}
+
+.widget-page-type-suggestion{
+	@media screen and (min-width: $screen-sm-min){
+		.suggestion-wrap{
+			display: table;
+			width: 100%;
+			.suggestion-card, .suggestion-content{
+				display: table-cell;
+				width: 50%;
+				vertical-align: middle;
+				padding: 27px 18px;
+				h4 a{
+					color: $secondary-text-color;
+				}
+			}
+		}
+		p{
+			text-align: left;
+		}
+		.image{
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		// allows image to dynamically resize to the height of the headline
+		.image-wrap{
+			display: table;
+			width: 100%;
+			margin: 0;
+			.col-sm-4{
+				display: table-cell;
+				position: relative;
+				float: none;
+			}
+		}
+		.interior-widget{
+			height: 414px;
+			display: table-cell;
+		vertical-align: middle;
+		position: relative;
+		padding-top: 36px;
+		hr{
+			position: absolute;
+			top: 18px;
+			left: 0;
+			right: 0;
+		}
+
+		hr:first-of-type{
+			top: auto;
+			bottom: 18px;
+		}
+		}
+	}
+}
+
+.widget-page-type-calendar{
+	padding: 27px 0;
+	text-align: center;
+	@media screen and (min-width: $screen-sm-min){
+		padding: 45px 0;
+	}
+}
+
+.exterior-widget.widget-page-type-donation-v2,
+.exterior-widget.widget-page-type-donation{
+	h3 a{
+		@extend .accent;
+	}
+	.bar-text{
+		@extend .accent;
+		h2{
+			@extend .accent;
+			display: block;
+		}
+	}
+}
+
+.exterior-widget.widget-page-type-donation-v2 h3 {
+	margin-bottom: 0;
+}
+
+.widget-page-type-vote-pledge{
+	.btn-lg{
+		width: 100%;
+	}
+}
+
+// @media screen and (min-width: $screen-md-min){
+// 	.widget-fill{
+// 		height: 81px;
+// 	}
+// }
+
+// centers text vertically on blog and suggestion box widgets
+
+@media screen and (min-width: $screen-sm-min){
+	.widget-page-type-suggestion-box{
+		.col-sm-4{
+			display: table;
+		}
+	}
+}
+
+
+//
+// Cards
+// -----------------------------------------
+
+.card{
+	border-radius: 9px;
+}
+
+.activity-card{
+	text-align: left;
+	margin-bottom: 18px;
+	padding: 18px;
+	font-size: 13.5px;
+	font-weight: 300;
+
+	.signup-icon{
+		overflow: hidden;
+		position: absolute;
+		img{
+			width: 36px;
+			height: 36px;
+			border-radius: 36px;
+		}
+	}
+
+	&.inverse{
+		background: white;
+		color: $text-color;
+		font-family: $headings-font-family;
+		border-bottom-left-radius: 0;
+		position: relative;
+		margin-left: 45px;
+		a{
+			font-weight: 500;
+			color: $text-color;
+		}
+		.signup-icon{
+			left: -45px;
+			bottom: 0;
+		}
+	}
+	&.text-color{
+		background: $text-color;
+		color: white;
+		font-family: $headings-font-family;
+		border-bottom-right-radius: 0;
+		position: relative;
+		margin-right: 45px;
+		a{
+			font-weight: 500;
+			color: white;
+		}
+		.signup-icon{
+			right: -45px;
+			bottom: 0;
+		}
+	}
+}
+
+.activity-stream-card{
+	border-radius: 0;
+	background: white;
+	padding: 18px 18px 18px 72px;
+	position: relative;
+	min-height: 72px;
+	margin-bottom: 18px;
+
+
+	.signup-icon{
+		position: absolute;
+		top: 18px;
+		left: 18px;
+		img{
+			width: 36px;
+			height: 36px;
+			border-radius: 36px;
+		}
+	}
+	.activity{
+		font-family: $headings-font-family;
+		font-size: 13.5px;
+		font-weight: 300;
+		a{
+			font-weight: 500;
+			color: $text-color;
+		}
+		.timeago{
+			color: $brand-primary;
+			// solves the problem of a double line in Firefox
+			text-decoration: none;
+		}
+		.activity-content{
+			margin-top: 27px;
+		}
+
+		a.btn.btn-default.submit-link { color: $gray-lighter;}
+	}
+	&:hover{
+		@extend .beta-shadow;
+	}
+}
+
+// need the col to be display table in order for the card to be full width
+.suggestion-box, .blog, .widget-page-type-blog, .widget-page-type-suggestion-box{
+	.col-md-4, .col-sm-4{
+		display: table;
+
+		// objects displayed table-cell don't take margins
+		margin-bottom: 18px;
+
+		// fixes a problem in mobile where the tables collapse
+		@media screen and (max-width: $screen-xs-max){
+			width: 100%;
+		}
+
+	}
+}
+
+.blog-card, .suggestion-card{
+	height: 306px;
+	display: table-cell;
+  vertical-align: middle;
+  padding: 18px;
+  position: relative;
+  text-align: center;
+
+  hr{
+	max-width: 99px;
+	position: absolute;
+	top: 18px;
+	left: 0;
+	right: 0;
+  }
+
+  hr:first-of-type{
+	top: auto;
+	bottom: 18px;
+  }
+
+  h4{
+	position: relative;
+  }
+
+  &.image-bg{
+	background-size: cover;
+	background-position: center;
+	padding: 18px;
+	text-align: center;
+	border-radius: 0;
+	.overlay{
+		@include background-opacity($text-color, 0.6);
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	h4{
+		position: relative;
+		color: white;
+		font-weight: 500;
+		a{
+			color: white;
+		}
+	}
+	hr{
+		display: none;
+	}
+  }
+
+	&.text-color{
+		background: $text-color;
+	}
+	&.gray{
+		background: $gray;
+	}
+	&.gray-light {
+		background: $gray-light;
+	}
+	&.brand-primary{
+		background: $brand-primary;
+	}
+	&.brand-primary-lighter{
+		@include background-opacity($brand-primary, 0.2);
+	}
+
+	@media screen and (min-width: $screen-md-min){
+		height: 414px;
+	}
+}
+
+.blog-card.widget, .suggestion-card.widget{
+
+	// margin-bottom: 18px;
+	padding: 27px 18px;
+	height: auto;
+	display: block;
+
+	h4 a{
+		color: white;
+	}
+
+	&.image-bg{
+		padding: 9px 9px 9px 108px;
+		position: relative;
+		min-height: 99px;
+		text-align: left;
+		background-color: white;
+		.overlay{
+			display: none;
+		}
+		.image{
+			width: 90px;
+			height: 90px;
+			background-size: cover;
+			position: absolute;
+			left: 0;
+			top: 4.5px;
+			border-radius: 9px;
+		}
+		h4{
+			margin: 0;
+			a{
+				color: $text-color;
+			}
+		}
+	}
+
+	@media screen and (min-width: $screen-sm-min){
+		height: 306px;
+		display: table-cell;
+	vertical-align: middle;
+
+	&.image-bg{
+		background-size: cover;
+		background-position: center;
+		padding: 18px;
+		text-align: center;
+		border-radius: 0;
+		.overlay{
+			@include background-opacity($text-color, 0.6);
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		h4{
+			position: relative;
+			color: white;
+			font-weight: 500;
+			a{
+				color: white;
+			}
+		}
+		hr{
+			display: none;
+		}
+	}
+	}
+
+	@media screen and (min-width: $screen-sm-min){
+		height: 360px;
+	}
+	@media screen and (min-width: $screen-md-min){
+		height: 414px;
+	}
+}
+
+// the event card homepage widget is really complex - be forewarned!
+
+.event-card{
+	position: relative;
+	padding-left: 117px;
+	margin-bottom: 27px;
+	min-height: 99px;
+	font-size: 13.5px;
+	line-height: 18px;
+	text-align: left;
+
+	a{
+		color: $text-color;
+	}
+
+	.image, .event-date{
+		position: absolute;
+		width: 99px;
+		height: 99px;
+		left: 0;
+		top: 0;
+	}
+
+	.image{
+		background-size: cover;
+		background-position: center;
+		border-radius: 0px;
+	}
+
+	h2, h6{
+		margin:0;
+	}
+	h2{
+		font-size: 45px;
+		line-height: 45px;
+	}
+
+	h5{
+		margin-top: 0;
+	}
+
+	hr{
+		width: 99px;
+		margin: 18px auto;
+	}
+
+	.event-date{
+		padding: 18px;
+		text-align: center;
+		border-radius: 9px;
+
+		&.gray{
+			background: $gray;
+		}
+		&.gray-lighter{
+			background: $gray-lighter;
+		}
+		&.brand-primary{
+			background: $brand-primary;
+		}
+		&.brand-primary-lighter{
+			@include background-opacity($brand-primary, 0.3);
+		}
+
+	}
+
+	&.widget{
+		background: $gray-light;
+		padding: 27px;
+		text-align: center;
+	}
+
+	@media screen and (min-width: $screen-sm-min){
+
+		&.event-card-large{
+			padding-left: 0;
+			background: transparent;
+			border-radius: 0;
+
+			.image{
+				width: 100%;
+				height: 315px;
+				position: relative;
+			}
+			.left{
+				text-align: left;
+			}
+			.card-content:empty ~ .event-card .event-date {
+				padding-top: 0;
+			}
+			.event-date-wrap{
+				position: relative;
+				padding-left: 117px;
+				padding-top: 18px;
+			}
+			.event-headline{
+				display: table-cell;
+			vertical-align: middle;
+			height: 306px;
+			text-align: center;
+			background: $gray;
+			width: 1%;
+			border-radius: 9px;
+
+			hr{
+				position: absolute;
+				top: 18px;
+				left: 0;
+				right: 0;
+			}
+
+			hr:first-of-type{
+				top: auto;
+				bottom: 18px;
+			}
+			}
+			&.widget{
+				padding: 0;
+				text-align: left;
+				hr{
+					margin-left: 0;
+				}
+				.image{
+					height: auto;
+					padding-top: 100%;
+				}
+			}
+		}
+	}
+	@media screen and (min-width: $screen-md-min){
+
+		padding-left: 198px;
+		min-height: 162px;
+		font-size: 18px;
+	line-height: 27px;
+
+		.image, .event-date{
+			width: 162px;
+			height: 162px;
+			padding: 45px;
+			a {
+				text-decoration: none;
+			}
+		}
+
+		&.event-card-large:not(.single-card){
+
+			h6{
+				margin-top: 18px;
+			}
+			.image{
+				height: 414px;
+			}
+		}
+	}
+}
+
+.question-card{
+	background: white;
+	@extend .beta-shadow;
+	padding: 27px 18px;
+	margin-bottom: 18px;
+	&:hover{
+		@extend .alpha-shadow;
+	}
+}
+
+.leaderboard-card{
+	@include background-opacity($gray-lighter, 0.3);
+	margin-bottom: 9px;
+	padding: 18px 72px;
+	position: relative;
+	text-align: left;
+	.position{
+		position: absolute;
+		top: 13.5px;
+		left: 18px;
+	}
+	a{
+		color: $text-color;
+	}
+	h4{
+		padding-top: 4.5px;
+	display: block;
+	margin-bottom: 0;
+	}
+	.signup-icon{
+		position: absolute;
+	right: 9px;
+	top: 31.5px;
+		img{
+			width: 54px;
+		height: 54px;
+		border-radius: 54px;
+		}
+	}
+}
+
+.signup-card{
+	border-radius: 0;
+	background: white;
+	padding: 18px 18px 18px 90px;
+	position: relative;
+	margin-bottom: 36px;
+	max-width: 375px;
+	font-size: 13.5px;
+	line-height: 18px;
+	p{
+		font-size: 13.5px;
+		line-height: 18px;
+		margin-bottom: 9px;
+	}
+	h4{
+		padding-right: 18px;
+	}
+	.tel, .email{
+		font-size: 13.5px;
+		h6{
+			display: inline-block;
+			min-width: 50px;
+		}
+	}
+	.network{
+		color: $secondary-text-color;
+		text-decoration: underline;
+		font-weight: 700;
+		margin-right: 9px;
+	}
+	.signup-icon{
+		position: absolute;
+		left: 18px;
+		top: 18px;
+		img{
+			height: 54px;
+			width: 54px;
+			border-radius: 54px;
+		}
+	}
+	.delete, .post{
+		position: absolute;
+		right: 18px;
+		top: 31.5px;
+	}
+}
+
+#slider-cards {
+  height: 90px;
+
+  .slider-card{
+		border-radius: 0;
+		background: white;
+		position: relative;
+		margin-bottom: 36px;
+		h4{
+			padding-right: 18px;
+		}
+	}
+  .slider-card-profile {
+	background: white;
+	height: 90px;
+	padding: 18px 18px 18px 54px;
+	border-radius: 0;
+	img {
+	  float: none;
+	  margin-right: 0;
+	}
+	.signup-icon{
+		position: absolute;
+		left: 9px;
+		top: 22.5px;
+		img{
+			width: 36px;
+			height: 36px;
+			border-radius: 36px;
+		}
+	}
+	.slider-name {
+	  position: relative;
+	  line-height: inherit;
+	  top: 0;
+	  a:link, a:visited, a:active {
+		color: inherit;
+	  }
+	}
+  }
+}
+
+//
+// Activation message
+// -----------------------------------------
+
+.activation-message {
+	font-size: $secondary-body-font-size;
+}
+
+//
+// Wherever there is a round thumbnail of a user
+// -----------------------------------------
+
+.signup-icon{
+	img{
+		width: 27px;
+		height: 27px;
+		border-radius: 27px;
+	}
+}
+
+//
+// The little follow/unfollow buttons on signup cards and page follow
+// -----------------------------------------
+
+.post, .delete{
+	display: block;
+	width: 18px;
+	height: 18px;
+	border-radius: 18px;
+	text-align: center;
+
+  // center the icon vertically
+  line-height: 9px;
+  font-size: 18px;
+  padding: 3px;
+}
+.post{
+	background: $brand-primary;
+}
+.delete{
+	@include background-opacity($gray-base, 0.2);
+}
+
+// Page follow
+// -----------------------------------------
+
+.page-follow {
+	float: right;
+}
+
+.addreaction {
+	display: none;
+}
+
+// Facepile of followers
+// -----------------------------------------
+
+.followers-truncated{
+	.elipses{
+		font-size: 27px;
+		color: $gray;
+	}
+	a{
+		display: inline-block;
+		margin-left: 9px;
+		&:first-child{
+			margin-left: 0;
+		}
+	}
+}
+
+// Progress bar - the thermometer
+// -----------------------------------------
+
+.thermo-wrap{
+	margin: 0 -15px;
+	@include background-opacity($gray-light, 0.2);
+	padding: 18px 15px;
+
+	@media screen and (min-width: $screen-sm-min){
+		background: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.progress {
+	margin-top: 9px;
+  margin-bottom: 27px;
+  height: 27px;
+  background-color: $gray;
+  border-radius: 27px;
+  box-shadow: none;
+}
+
+.bar-text{
+	text-align: left;
+	padding-left: 9px;
+	font-size: 9px;
+	line-height: 27px;
+	color: $secondary-text-color;
+	h2{
+		margin: 0;
+		margin-top: 9px;
+		display: inline-block;
+		color: $text-color;
+	}
+	@media (min-width: $screen-sm-min) {
+		font-size: 13.5px;
+	}
+}
+
+.progress .bar {
+  background-color: lighten(desaturate(adjust-hue($brand-primary, 0.0234), 47.6103), 29.0196);
+  background-image: linear-gradient(-90deg, $brand-primary 0%, lighten(desaturate(adjust-hue($brand-primary, 0.0234), 47.6103), 29.0196) 79%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(desaturate(adjust-hue($brand-primary, 0.0234), 47.6103), 29.0196)', endColorstr='$brand-primary', GradientType=0);
+  box-shadow: none;
+}
+
+.progress .bar + .bar {
+  box-shadow: none;
+}
+
+
+// Countdown on moneybomb pages and widget
+// -----------------------------------------
+
+.countdown{
+	width: 260px;
+	line-height: 36px;
+	height: auto;
+	margin: 0px auto;
+}
+
+#t7_timer{
+	width: 260px;
+	height: auto;
+}
+
+.t7_numbs{
+	border-radius: 9px;
+	color: $text-color;
+	font-family: $headings-font-family;
+	line-height: 54px;
+	text-align: center;
+  overflow: hidden;
+  font-size: 22.5px;
+  font-weight: 500;
+}
+
+#t7_vals{
+	height: 54px;
+}
+
+.countdown-formatting{
+	background-image: none;
+	height: 54px;
+	letter-spacing: 14px;
+	margin-right: 4.5px;
+	letter-spacing: 14px;
+	width: 60px;
+	padding: 0 9px;
+	float: none;
+  display: inline-block;
+}
+
+#t7_d{
+	@extend .countdown-formatting;
+	@include background-opacity($brand-primary, 0.8);
+}
+
+#t7_h{
+	@extend .countdown-formatting;
+	@include background-opacity(lighten(saturate(adjust-hue($brand-primary, 0.0097), 0.6711), 13.5294), 0.8);
+}
+
+#t7_m{
+	@extend .countdown-formatting;
+	@include background-opacity(lighten(saturate(adjust-hue($brand-primary, 0.8612), 12.5523), 41.9608)
+, 0.8);
+}
+
+#t7_s{
+	@extend .countdown-formatting;
+	@include background-opacity(#fff, 0.8);
+	margin-right: 0;
+	height: auto;
+}
+
+.t7_labs{
+	font-size: 9px;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: $font-family-serif;
+	color: rgba(255,255,255,0.8);
+	left: 0;
+	top: 0
+}
+
+.form-wrap{
+	.t7_labs{
+		color: $text-color;
+	}
+}
+
+.label-formatting{
+	width: 60px;
+	margin-right: 4.5px;
+	float: none;
+	display: inline-block;
+}
+
+#t7_dl, #t7_hl, #t7_ml, #t7_sl{
+	@extend .label-formatting;
+}
+
+//
+// Pagination (pagination.scss)
+// --------------------------------------------------
+
+.pagination-container{
+	text-align: center;
+	margin: 18px 0;
+	border: 0;
+}
+
+.pagination {
+  border-radius: 0;
+  text-align: center;
+
+  > li {
+	display: inline; // Remove list-style and block-level defaults
+	> a,
+	> span {
+	  padding: 9px 27px;
+	  line-height: 9px;
+	  border-radius: 45px;
+	  font-size: 9px;
+	  font-family: $headings-font-family;
+	  text-transform: uppercase;
+	  display: none;
+	  font-weight: 500;
+	  min-width: 100px;
+	}
+	&:first-child {
+	  > a,
+	  > span {
+		@include border-left-radius(45px);
+		display: block;
+	  }
+	}
+	&:last-child {
+	  > a,
+	  > span {
+		@include border-right-radius(45px);
+		display: block;
+		margin-left: 9px;
+	  }
+	}
+	@media screen and (min-width: $screen-md-min){
+		> a,
+		> span {
+		  padding: 13.5px 45px;
+		  line-height: 13.5px;
+		  font-size: 13.5px;
+		  min-width: 160px;
+		}
+	}
+  }
+}
+
+//
+// Page Byline
+// --------------------------------------------------
+
+.byline{
+	position: relative;
+	.signup-card{
+		padding: 18px 0px 18px 72px;
+		background: transparent;
+		.signup-icon{
+			left: 0;
+		}
+		.post{
+			right: 0;
+		}
+	}
+}
+
+//
+// Form Errors
+// NationBuilder displays form errors as H2s which is excessive - this makes the H2s smaller
+// -----------------------------------------
+.form-errors{
+	h2{
+		font-size: 9px;
+	line-height: 13.5px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	}
+	ul{
+		list-style-type: none;
+	margin-bottom: 18px;
+	margin-left: 0;
+	padding-left: 0;
+	font-size: 13.5px;
+	font-weight: 700;
+	li{
+		padding-left: 18px;
+		border-left: 4px solid $brand-primary;
+	}
+	}
+}
+
+
+
+// Other Components
+// -----------------------------------------
+
+.connect-button, .bar-goal {
+	@extend .marginbottomless;
+}
+
+.flag_form {
+	@extend .marginbottommore;
+}
+
+.cc, .form-submit {
+	@extend .margintopless;
+}
+
+.on-button-small, .off-button-small {
+	@extend .label;
+}
+
+.on-button-small {
+	@extend .label-success;
+}
+
+.off-button-small {
+	@extend .label-danger;
+}
+
+.share-container.panel {
+	@extend .margintopmore;
+	margin-bottom: 0;
+}
+
+.share-close {
+	margin-top: -.4em;
+}
+
+.activities{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.panel {
+	.excerpt-type {
+		margin-top: -.2em;
+	}
+}
+
+.media {
+	.media-left {
+		img {
+			max-width: none;
+		}
+	}
+}
+
+
+.page-excerpt {
+	&:last-of-type, &:last-child {
+		& + hr {
+			display: none;
+		}
+	}
+}
+
+.page-excerpts {
+	& > li:last-child {
+		& > hr:last-child {
+			display: none;
+		}
+	}
+}
+
+// Suggestion box pages
+// -----------------------------------------
+
+#suggestion-page-form-expanded {
+	display: none;
+}
+
+// Suggestion pages
+// -----------------------------------------
+
+.how-would-you-tag {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px 15px 0;
+}
+
+// Follows/followers pages
+.people-list-follow {
+	.delete {
+		margin-left: 3px;
+		vertical-align: middle;
+	}
+}
+
+.people-list {
+	padding-top: 15px;
+	border-top: 1px solid $hr-border;
+	.media-body {
+		width: 100%;
+		padding: .5em .5em .5em 0;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+
+	.people-list-follow {
+		float: right;
+		text-align: right;
+	}
+
+	.user_session_form {
+		#user_session_email {
+			margin-bottom: 0;
+		}
+	}
+
+}
+
+
+
+//
+// Activity Stream
+// -----------------------------------------
+
+#stream{
+	margin-top: 9px;
+}
+.page-type-activity-stream #stream {
+	margin-top: 36px;
+}
+
+.reaction-wrap{
+	@include background-opacity($gray-light,0.2);
+	padding: 45px 0;
+
+
+	.user-session-form-container {
+		margin-top: 27px;
+	}
+
+	@media (min-width: $screen-sm-min) {
+		.sign-in-with-email{
+			.btn-lg-tablet{
+				width: 100%;
+			}
+		}
+	}
+}
+
+#reactions{
+	padding-top: 45px;
+}
+
+#featured_endorsements, #petition-photos{
+	img{
+		margin-right: 18px;
+	}
+}
+
+
+//
+// Login page
+// -----------------------------------------
+
+.login-wrap, .sign-up-wrap{
+	vertical-align: middle;
+	margin-bottom: 0;
+	border-radius: 0;
+
+	a:focus, a:hover{
+		text-decoration: none;
+	}
+	h4{
+		padding: 27px 0;
+		text-align: center;
+
+		a:focus{
+			border: 0;
+			text-decoration: none;
+		}
+	}
+	.panel-collapse{
+		padding-bottom: 36px;
+	}
+}
+.login-wrap{
+	@include background-opacity($gray-lighter, 0.2);
+	.btn.facebook, .btn.twitter{
+		width: 48%;
+	}
+	.twitter{
+		margin-left: 3%;
+	}
+}
+.sign-up-wrap{
+	background-color: $brand-primary;
+	a{
+		color: $text-color;
+	}
+}
+
+@media screen and (min-width: $screen-sm-min){
+	.login-wrap, .sign-up-wrap{
+		max-width: 457px;
+		margin: 0 auto;
+		border-radius: 9px;
+
+		.container{
+			width: auto;
+		}
+	}
+	.login-wrap{
+		background-color: $gray;
+		margin-bottom: 27px;
+
+		a{
+			color: $text-color;
+			&:hover, &:focus{
+				color: $text-color;
+			}
+		}
+	}
+	.panel-collapse{
+		padding: 0 36px 36px;
+	}
+}
+
+//
+// Blog page
+// -----------------------------------------
+// Blog cards are display table cell so they don't take margins
+
+.blog .page-excerpt{
+	margin-bottom: 27px;
+}
+
+
+// Calendar page
+// -----------------------------------------
+
+#events_map{
+	height: 280px !important;
+  margin: 0 -15px;
+  @media screen and (min-width: $screen-sm-min){
+	height: 414px !important;
+	margin: 0;
+  }
+}
+#calendar_page_change_address_change_form{
+	.text:not(#address_change_submitted_address){
+		width: 60%;
+		float: left;
+		margin-top: 4.5px;
+	}
+	.input-group-btn{
+		margin-top: 9px;
+		width: 37%;
+		float: right;
+	}
+}
+
+.page-type-calendar .panel-group {
+	background: white;
+	border: 1px solid #DAE1E6;
+	border-radius: 9px;
+	// padding-left: 150px;
+	padding: 25px;
+	-webkit-box-shadow: 0 5px 17px rgba(0,0,0,0.13);
+	box-shadow: 0 5px 17px rgba(0,0,0,0.13);
+	position: relative;
+	padding-top: 27px;
+}
+
+.map-wrap{
+	margin-bottom: 18px;
+}
+
+.map img {
+	max-width: none;
+}
+
+// Directory page
+// -----------------------------------------
+.signup-wrap{
+	@include background-opacity($gray-light,0.2);
+	padding: 45px 0;
+}
+
+// Donation pages
+// -----------------------------------------
+
+[for='donation_amount_other']{
+	display: none;
+}
+
+#donation_amount_other {
+	margin-top: 18px;
+}
+
+#donation_amount_other {
+	@extend .form-control;
+	width: auto;
+}
+
+#donation_num_installments {
+	color: $gray;
+}
+
+.donation-container{
+	@extend .alpha-shadow;
+	background: white;
+	border-radius: 9px;
+	overflow: hidden;
+	.form-errors{
+		padding: 9px 18px;
+	}
+	.donation-left{
+		background: $gray;
+		.body{
+			padding: 18px;
+		}
+	}
+	.btn-primary{
+		float: right;
+	}
+	.btn-ghost{
+		background: transparent;
+		float: left;
+	}
+
+	@media screen and (min-width: $screen-sm-min){
+		display: table;
+		width: 100%;
+		.donation-left{
+			.checkbox label, .checkbox.label{
+				color: white;
+			}
+		}
+		.donation-left, .donation-right{
+			display: table-cell;
+			width: 50%;
+			vertical-align: top;
+		}
+		.donation-right{
+			padding: 90px 45px 45px 45px;
+		}
+	}
+}
+
+.form-progress-indicator {
+  width: 100%;
+}
+
+.progress-indicator-stages{
+	list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+  display: table;
+  width: 100%;
+  li{
+	margin-right: 0;
+	width: 33.33333%;
+	display: table-cell;
+	padding: 18px;
+	font-family: $headings-font-family;
+	font-weight: 500;
+	color: white;
+	font-size: 13.5px;
+	border-bottom: 1px solid rgba(255,255,255,0.3);
+	span{
+		opacity: 0.3;
+	}
+	&.active, &.completed{
+		border-bottom: 3px solid $brand-primary;
+		span{
+			opacity: 1;
+		}
+	}
+  }
+}
+
+.progress-stages {
+  min-height: 402px;
+  .progress-stage {
+	display: none;
+	&.active {
+	  display: block;
+	}
+  }
+  .errorExplanation {
+    padding: 1px 36px 18px 36px;
+  }
+  label[for='donation_card_expires_on'] {
+    position: static;
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+// Event page
+// -----------------------------------------
+
+.event-detail-wrap{
+	@include background-opacity($gray-light, 0.2);
+	padding: 45px 0;
+}
+.page-type-event{
+	#slider-cards{
+		.slider-card-profile{
+			padding: 18px;
+			.signup-icon{
+				display: none;
+			}
+		}
+	}
+}
+
+//
+// Invoice pages
+// -----------------------------------------
+
+.invoices {
+	.invoice-total, .amount {
+		@extend .text-right;
+	}
+	.expander-sign {
+		cursor: pointer;
+	}
+	.expander-content {
+		display: none;
+	}
+}
+
+.invoice-total {
+	strong {
+		font-size: $font-size-small;
+		text-transform: uppercase;
+	}
+}
+
+//
+// Leaderboard
+// -----------------------------------------
+
+.leaderboard-rank {
+	position: relative;
+	display: block;
+	float: left;
+	margin: -20px 0 0 4px;
+}
+
+//
+// Moneybomb pages
+// -----------------------------------------
+
+#pledge_amount_other {
+	@extend .form-control;
+	width: auto;
+	margin: 9px 0 9px 4.5px;
+}
+label[for="pledge_amount_other"]{
+	width: 100%;
+	padding-left: 5px;
+	display: block;
+	position: static;
+}
+.page-type-moneybomb .submit-button + .btn-danger {
+	margin-top: 34px;
+}
+
+//
+// Profile pages
+// -----------------------------------------
+
+.profile-header{
+	border-radius: 9px;
+  background: white;
+  position: relative;
+  padding: 81px 18px 36px;
+  text-align: center;
+  .signup-icon{
+	display: block;
+	position: absolute;
+	top: -50px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	img{
+		width: 126px;
+		height: 126px;
+		border-radius: 126px;
+		box-shadow: 0 3px 3px rgba(0,0,0,0.13);
+	}
+}
+  h2, h6{
+	text-align: center;
+	.delete, .post{
+		margin: 10px auto;
+	}
+}
+.network{
+	@include background-opacity($gray-base, 0.3);
+	width: 45px;
+	height: 45px;
+	border-radius: 45px;
+	display: inline-block;
+	margin-right: 18px;
+	margin-top: 45px;
+	text-align: center;
+	line-height: 45px;
+	color: white;
+	font-size: 24px;
+	a{
+		color: white;
+	}
+	i{
+		margin-right: 0;
+	}
+	.icon-twitter{
+		padding-left: 6px;
+	}
+	.icon-facebook {
+		padding-left: 3px;
+	}
+	img{
+		margin-top: -5px;
+	}
+  }
+}
+
+.fundraising-box{
+	border-radius: 9px;
+  background: white;
+  padding: 18px;
+  margin-top: 45px;
+}
+
+//
+// Recruiting pages
+// -----------------------------------------
+.white-bg{
+	background: white;
+}
+
+//
+// Rule pages
+// -----------------------------------------
+.rule-list{
+	font-size: 13.5px;
+	@media (min-width: $screen-md-min) {
+		font-size: 18px;
+	}
+}
+
+
+//
+// Settings page
+// -----------------------------------------
+
+.page-signups-edit{
+	.panel-group {
+	  @media screen and (min-width: $screen-sm-min){
+		background: white;
+			border: 1px solid $gray-light;
+			border-radius: 9px;
+			padding-left: 150px;
+			box-shadow: 0 5px 17px rgba(0,0,0,0.13);
+			position: relative;
+			padding-top: 27px;
+
+			.panel-title>a[aria-expanded="true"] {
+			pointer-events: none;
+			}
+
+		  .panel {
+			@include border-bottom-radius(0);
+			border: 0;
+			background: transparent;
+
+			.panel-body{
+				padding: 0;
+			}
+
+			.panel-title{
+				position: absolute;
+				left: 36px;
+				top: 36px;
+			}
+
+			.panel-heading{
+				padding: 0;
+				margin: 0;
+			}
+
+			&:nth-child(2){
+				.panel-title{
+					top: 63px;
+				}
+			}
+			&:nth-child(3){
+				.panel-title{
+					top: 90px;
+				}
+			}
+		  }
+	  }
+	}
+}
+
+
+//
+// Suggestion box pages
+// -----------------------------------------
+
+.tag-list{
+	> li > a{
+		border-radius: 100px;
+	}
+}
+
+//
+// Suggestion pages
+// -----------------------------------------
+
+.page-type-suggestion{
+	.answer{
+		margin: 27px 0;
+		padding: 27px;
+		@include background-opacity($gray-light, 0.3);
+	}
+}
+
+//
+// Survey pages
+// -----------------------------------------
+
+.page-type-survey{
+
+	// turns radios into full width buttons
+
+	.radio-inline{
+		display: block;
+		width: 100%;
+		margin-left: 0;
+		label.radio{
+			margin: 0;
+			width: 100%;
+		}
+	}
+	.radio-inline+.radio-inline{
+		padding-right: 0;
+		margin-left: 0;
+	}
+}
+
+//
+// Splash page
+// -----------------------------------------
+.splash-page{
+	.like-page, #stream{
+		display: none;
+	}
+}
+
+//
+// Volunteer pages
+// ------------------------------------------
+
+.page-type-volunteer-signup {
+	.intro {
+		font-size: $secondary-body-font-size;
+	}
+}
+
+//
+// svg to png
+//-------------------------------------------
+
+input[type="file"] +label:before{
+		padding: 17px 20px;
+		content: "";
+		background-image: url(upload.png);
+		background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+select.form-control {
+	background-size: 10px;
+}
+.modal-body .form-errors ul {
+	background-size: 18px;
+}
+.notice .image {
+	background-size: 20px;
+}
+@media screen and (max-width: 768px) {
+	.flash-share .modal-body .share-right .close {
+		margin: 9px 18px 9px 0;
+	}
+}
+
+//
+// Donation v2 Pages
+//-------------------------------------------
+
+.page-type-donation-v2.page-pages-show-donation-v2-wide {
+	.card-error-container .card-error {
+		font-size: 13px;
+		padding-top: 5px;
+		color: $brand-danger;
+	}
+	span.error-message {
+		@extend .form-error !optional;
+	}
+	.ticket-list {
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			li {
+				font-size: 20px;
+				line-height: 30px;
+				font-weight: bold;
+			}
+		}
+	}
+	.text-rule {
+		font-size: 13px;
+	}
+	a.clear-order {
+		font-size: 18px;
+	}
+	.small-gutter {
+		padding: 0 30px;
+    > .row {
+      padding-left: 5px;
+      padding-right: 5px;
+      .row {
+          margin-left: -5px;
+          margin-right: -5px;
+      }
+      *[class*="col-"] {
+          padding-left: 5px;
+          padding-right: 5px;
+      }
+    }
+	}
+	.small-gutter div[class*="col-"].donation-v2-container {
+		padding: 50px 15px;
+		@extend .alpha-shadow !optional;
+		background: white;
+
+	}
+	#donation_amount_other {
+		display: none;
+		+ label {
+			top: 0;
+			margin: 0;
+		}
+		&:focus + label,
+		&:active + label {
+			top: 0;
+			font-size: 13.5px;
+			background-color: $gray-base;
+			color: $body-bg;
+			border-color: transparent;
+		}
+	}
+	.donation-other-input-container {
+		.currency-symbol {
+			position: absolute;
+			font-size: 24px;
+			position: absolute;
+			top: 50%;
+			left: 7px;
+			transform: translate( 0, -50%);
+		}
+		.nb_donation_v2_amount {
+			@extend .form-control !optional;
+			padding: 9px 9px 9px 24px !important;
+			font-size: 20px !important;
+		}
+	}
+	.card-monthly div {
+		font-size: 12px;
+	}
+	.radio-inline.donation-v2-amounts {
+		width: 100%;
+		margin: 0 0 10px;
+		label {
+			background: $gray;
+			color: $btn-gray-color;
+		}
+		input[type="radio"]:checked+label {
+			background-color: $gray-base;
+			color: $body-bg;
+			border-color: transparent;
+		}
+		.used#donation_amount_other+label {
+			font-size: 13.5px;
+		}
+		span {
+			float: left;
+			padding: 5px;
+			min-width: 33.333%;
+			width: 33.333%;
+			&:nth-child(3n) {
+				padding-right: 0;
+			}
+			&:nth-child(3n + 1) {
+				padding-left: 0;
+			}
+			label {
+				width: 100%;
+				margin: 0;
+			}
+		}
+	}
+	.donation-v2-occurence-radio {
+		position: relative;
+		left: 4.5px;
+		> span {
+			@extend .radio-inline !optional;
+			width: 50%;
+			float: left;
+			&:first-child {
+				padding-right: 8px;
+			}
+			&:last-child {
+				padding-left: 3px;
+				margin: 0;
+			}
+			label.radio {
+				left: 0;
+				position: relative;
+				width: 100%;
+				min-width: 100%;
+				margin: 0;
+				background: $gray;
+				color: $btn-gray-color;
+			}
+			input[type="radio"]:checked+label.radio {
+				background-color: $gray-base;
+				color: $body-bg;
+				border-color: transparent;
+				&:hover {
+					color: $body-bg;
+				}
+			}
+			input[type="radio"]+label.radio {
+				&:hover {
+					color: $btn-gray-color;
+				}
+			}
+		}
+	}
+	.contribution-rules {
+		font-size: 18px;
+	}
+	.submit-container {
+		background-color: $gray-lighter;
+		border-radius: 2px;
+		text-align: center;
+		padding: 35px 15px 50px;
+		.donation-v2-amount {
+			font-size: 40px;
+			margin-bottom: 25px;
+			width: 100%;
+			min-height: 46px;
+			line-height: initial;
+			span {
+				opacity: 1;
+				font-weight: bold;
+				display: inline-block;
+				.nb_donation_v2_interval {
+					font-size: 17px;
+					&.hidden {
+						display: none;
+						opacity: 0;
+					}
+				}
+				&.hidden {
+					opacity: 0;
+					display: none;
+					+ span {
+						font-size: 22px;
+						font-weight: normal;
+					}
+					~ .nb_donation_v2_interval {
+						display: none;
+					}
+				}
+			}
+			.nb_donation_v2_amount {
+				margin-left: 4px;
+			}
+			.hidden + .nb_donation_amount {
+				font-size: 22px;
+			}
+		}
+	}
+}
+@media (min-width: 767px) {
+	.page-type-donation-v2.page-pages-show-donation-v2-wide {
+		.donation-v2-container {
+			border-radius: 9px;
+			padding: 60px;
+		}
+		.radio-inline.donation-v2-amounts span {
+			min-width: 25%;
+			width: 25%;
+			&:nth-child(3n) {
+				padding-right: 5px;
+			}
+			&:nth-child(3n + 1) {
+				padding-left: 5px;
+			}
+			&:nth-child(4n) {
+				padding-right: 0;
+			}
+			&:nth-child(4n + 1) {
+				padding-left: 0;
+			}
+		}
+		.small-gutter {
+			> .row {
+				padding: 0 100px;
+			}
+			div[class*="col-"].donation-v2-container {
+				padding: 50px 60px;
+			}
+		}
+	}
+}
+
+// Consent Forms
+//-------------------------------------------
+// Add spacing after consent fields
+.consent-form-container {
+	margin-bottom: 2em;
+	.vote-pledge-form &,
+	.endorsement_form & {
+		margin-bottom: 0;
+	}
+}
+// Put radio yes/no inputs on the same line
+.consent-form__option .radio {
+  display: inline-block;
+	margin-right: 2em;
+	&:last-of-type {
+		margin-right: 0;
+	}
+}
+
+.consent-form__option p {
+	font-size: 13.5px;
+  font-weight: 500;
+}
+.consent-form__option p:last-of-type {
+	margin-bottom: 0;
+}
+
+// paid membership options
+ul.membership-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li.membership {
+    position: relative;
+    text-align: center;
+    list-style: none;
+    @include background-opacity($gray-light,0.2);
+    padding: 18px;
+    display: inline-block;
+    margin: 0 10px 18px 0;
+    width: 100%; // 236px ÷ 984px
+    h3 {
+      font-weight: 500;
+    }
+    .membership-bottom {
+      background-color: #444;
+      color: #ccc;
+    }
+    .membership-blurb {
+      padding: 15px 0;
+      font-size: 13px;
+      line-height: 16px;
+    }
+    .buy {
+      text-align: center;
+    }
+    .submit-button {
+      margin: auto;
+      display: inline-block;
+      @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, 27px, 100px);
+      font-weight: 700;
+      color: $btn-default-color;
+      border: 1px solid transparent;
+      background: $btn-default-bg;
+      border-color: $btn-default-border;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &.focus {
+        background-color: darken($btn-default-bg, 5%);
+      }
+
+      &,
+      &:active,
+      &.active {
+        &:focus,
+        &.focus {
+          @include tab-focus;
+        }
+      }
+
+      &:active,
+      &.active {
+        box-shadow: none;
+      }
+    }
+    .badge {
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  ul.membership-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    li.membership {
+      vertical-align: top;
+      display: inline-block;
+      margin: 0 1.22% 1.22% 0;
+      width: 31.8%;
+      height: 250px;
+      .buy {
+        position: absolute;
+        left: 0;
+        bottom: 15px;
+        right: 0;
+      }
+    }
+  }
+}

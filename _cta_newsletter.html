@@ -1,0 +1,115 @@
+<!-- {% subpage "iscrizione_newsletter " with "cta_newsletter" %} -->
+<div class="container">
+    <div class="row contact-page">
+        <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="section-head title-bold title-sep text-center">
+                <span class="subheading">{{ page.headline }}</span>
+                <h2>{{ page.title }}</h2>
+                <p class="text-mid">{{ page.signup.content }}</p>
+            </div>
+        </header>
+
+
+        <div class="col-sm-12 item_left">
+            <div id="form-mr" class="clearfix shadow">
+                <div class="container-form">
+                    {% form_for signup %}
+                    <div class="row contact-form">
+
+                        <div class="form-errors">{% error_messages_for signup %}</div>
+                        <div class="col-md-6">
+                            <input class="text form-control" placeholder="Nome*" required="required" id="signup_first_name" name="signup[first_name]" type="text" >
+                        </div>
+                        <div class="col-md-6">
+                            <input class="text form-control" placeholder="Cognome*" required="required" id="signup_last_name" name="signup[last_name]" type="text" >
+                        </div>
+                        <div class="col-md-6">
+                            {% email_field "email", class:"text form-control" placeholder="Email*" required="required" %}
+                        </div>
+                        <div class="col-md-6">
+                            {% text_field "home_address.city", class:"text form-control" placeholder="Cap*" required:"required" %}
+                        </div>
+
+                        <div class="col-md-12" style="text-align: center;">
+                            <div class="submit-button btn btn-blue open-consent">CONTATTO</div>
+                            <a class="submit-button btn btn-blue" href="/volontari">VOLONTARIO</a>
+                            <a class="submit-button btn btn-blue" href="/collaboratori">COLLABORATORE</a>
+                        </div>
+                    </div>
+
+                    <div class="lightbox-consent-form lcf1">
+                        <div class="container">
+                            <div class="terms">
+                                <div class="close-consent">x</div>
+                                {% include "consent_form" %}
+                                <div class="consent_submit">
+                                {% submit_tag "iscriviti", class:"submit-button btn btn-blue" %}
+                                </div>
+                                <div class="form-submit"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endform_for %}
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    $('.open-consent').click(function(){
+        $('.lcf1').css('display','flex');
+    });
+    $('.close-consent').click(function(){
+        $('.lcf1').css('display','none');
+    });
+
+
+</script>
+
+<style>
+.newsletter-top {
+    background-color: #217DB2;
+    color: #fff;
+    padding-top: 29px;
+    padding-bottom: 29px;
+}
+.form-ac .text.form-control {
+    width: 185px;
+    height: 50px;
+    background-color: #ffffff;
+    display: inline-block;
+    color: #000000;
+    font-family: "Montserrat",sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+</style>
+
+<script>
+    $(document).ready(function(){
+
+
+        $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', true);
+        jQuery( "input" ).on( "click", function() {
+            console.log($( "#consents_88_1:checked" ).val());
+            console.log($( "#consents_89_1:checked" ).val());
+
+            if ($( "#consents_88_1:checked" ).val()== 1 && $( "#consents_89_1:checked" ).val()== 1 ){
+                $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', false);
+                $('#signup_custom_values_gdpr_acceptance_custom').prop('checked',true);
+            }else{
+                $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', true);
+                $('#signup_custom_values_gdpr_acceptance_custom').prop('checked',false);
+            }
+        });
+
+
+    });
+</script>

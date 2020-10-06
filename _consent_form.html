@@ -1,0 +1,57 @@
+<div class="consentform">
+
+  {% if page.consent_form.content != "" %}
+
+  <p>{{page.consent_form.content}}</p>
+
+  {% endif %}
+
+  {% for consent_option in page.consent_form.consent_options %}
+  {% assign consent_name = consent_option.yes_radio_name | replace: '_', ']' | | replace_first: ']', '[' %}
+  {% assign size = consent_name | size | minus:1 %}
+
+  <div class="consent-form__option">
+    <p>{{consent_option.description}}</p>
+    <div class="radio">
+      <label class="radio" for="{{consent_option.yes_radio_name}}" class="resp"><input type="radio" value="1" name="{{ consent_name | slice: 0, size }}" id="{{consent_option.yes_radio_name}}" required>
+        Do il consenso
+      </label>
+    </div>
+    <div class="radio">
+      <label class="radio" for="{{consent_option.no_radio_name}}" class="resp"><input type="radio" value="0" name="{{ consent_name | slice: 0, size }}" id="{{consent_option.no_radio_name}}" required>
+        Non do il consenso
+      </label>
+    </div>
+
+
+
+  </div>
+
+
+  {% endfor %}
+
+  <div class="privacy_note"></div>
+
+</div>
+<script>
+
+
+  $(document).ready(function(){
+    $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', true);
+
+
+    jQuery( "input" ).on( "click", function() {
+      console.log($( "#consents_88_1:checked" ).val());
+
+      if ($( "#consents_88_1:checked" ).val()== 1 ){
+        $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', false);
+        $('#signup_custom_values_gdpr_acceptance_custom').prop('checked',true);
+      }else{
+        $(".consentform").closest('form').find('input[type="submit"]').prop('disabled', true);
+        $('#signup_custom_values_gdpr_acceptance_custom').prop('checked',false);
+      }
+    });
+
+
+  });
+</script>
